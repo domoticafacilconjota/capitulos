@@ -1,5 +1,5 @@
-# Este fichero debe ir en un MemoryPEN (pincho de memoria que se llame CONFIG)
-# y dentro de una carpeta que se llame "network".
+# Este fichero debe ir en un MemoryPEN (pincho de memoria)
+# que se llame "CONFIG" y dentro de una carpeta que se llame "network".
 ##############################################################################
 # Elimina todas las líneas que comienzan con el carácter "#"
 [connection]
@@ -12,7 +12,7 @@ type=802-3-ethernet
 method=manual
 # Sustituye 192.168.1.20 por la IP que quieres para tu Intel NUC o Raspi.
 # Si no sabes que es el /24 déjalo así.
-# Sustituye 192.168.1.1 por tu puerta de enlace o lo que es lo mismo la IP de tu router
+# Sustituye 192.168.1.1 por tu puerta de enlace o lo que es "lo mismo" la IP de tu router
 address=192.168.1.20/24;192.168.1.1
 # Sustituye 8.8.8.8 y 8.8.4.4 por tus DNS preferidas o deja estas para usar las de Google.
 dns=8.8.8.8;8.8.4.4
