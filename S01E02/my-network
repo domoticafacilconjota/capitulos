@@ -1,3 +1,6 @@
+# Este fichero debe ir en un MemoryPEN (pincho de memoria que se llame CONFIG)
+# y dentro de una carpeta que se llame "network".
+##############################################################################
 # Elimina todas las líneas que comienzan con el carácter "#"
 [connection]
 id=my-network
