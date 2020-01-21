@@ -1,0 +1,19 @@
+# Elimina todas las líneas que comienzan con el carácter "#"
+[connection]
+id=my-network
+# Genera tu propio UUIDv4 en https://www.uuidgenerator.net/version4
+uuid=0b238852-af88-4819-a2a2-c57a76bb7821
+type=802-3-ethernet
+
+[ipv4]
+method=manual
+# Sustituye 192.168.1.20 por la IP que quieres para tu Intel NUC o Raspi.
+# Si no sabes que es el /24 déjalo así.
+# Sustituye 192.168.1.1 por tu puerta de enlace o lo que es lo mismo la IP de tu router
+address=192.168.1.20/24;192.168.1.1
+# Sustituye 8.8.8.8 y 8.8.4.4 por tus DNS preferidas o deja estas para usar las de Google.
+dns=8.8.8.8;8.8.4.4
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
