@@ -1,0 +1,18 @@
+{
+  "workgroup": "WORKGROUP",
+  "username": "tunombredeusuario",
+  "password": "tucontraseñasuperdifícil",
+  "interface": "",
+  "allow_hosts": [
+    "192.168.0.0/24",
+    "192.168.1.0/24",
+    "192.168.2.0/24
+  ],
+  "veto_files": [
+    "._*",
+    ".DS_Store",
+    "Thumbs.db",
+    "icon?",
+    ".Trashes"
+  ]
+}
