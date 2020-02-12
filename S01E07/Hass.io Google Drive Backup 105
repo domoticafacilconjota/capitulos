@@ -1,0 +1,9 @@
+max_snapshots_in_hassio: 3
+max_snapshots_in_google_drive: 12
+days_between_snapshots: 1
+use_ssl: false
+send_error_reports: false
+snapshot_time_of_day: '00:01'
+enable_snapshot_state_sensor: false
+notify_for_stale_snapshots: false
+enable_snapshot_stale_sensor: false
