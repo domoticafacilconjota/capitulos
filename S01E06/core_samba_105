@@ -1,0 +1,15 @@
+workgroup: WORKGROUP
+username: df # Nombre de usuario
+password: df # Contraseña
+interface: ''
+allow_hosts:
+# IP de la Raspberry sustituyendo el número después 
+# del último punto por un 0 y poniendo un 24 después
+# de la barra /
+  - 192.168.1.0/24
+veto_files:
+  - ._*
+  - .DS_Store
+  - Thumbs.db
+  - icon?
+  - .Trashes
