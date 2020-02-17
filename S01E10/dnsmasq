@@ -1,0 +1,7 @@
+defaults:
+  - 8.8.8.8
+  - 8.8.4.4
+forwards: []
+hosts:
+  - host: xxxxxxxxxxx.duckdns.org
+    ip: 192.168.1.20
