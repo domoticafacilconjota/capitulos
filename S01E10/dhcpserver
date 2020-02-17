@@ -1,0 +1,17 @@
+default_lease: 86400
+max_lease: 172800
+domain: domoticafacil.com
+dns:
+  - 192.168.1.20
+networks:
+  - subnet: 192.168.1.0
+    netmask: 255.255.255.0
+    range_start: 192.168.1.30
+    range_end: 192.168.1.200
+    broadcast: 192.168.1.255
+    gateway: 192.168.1.1
+    interface: eth0
+hosts:
+  - name: shelly1_cocina
+    mac: '33:28:31:bc:ab:ac'
+    ip: 192.168.1.5
