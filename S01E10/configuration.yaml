@@ -1,0 +1,5 @@
+# DuckDNS
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  base_url: xxxxxxxxxxx.duckdns.org:8123
