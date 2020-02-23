@@ -1,0 +1,15 @@
+credential_secret: 'unacontraseñadetuelección'
+dark_mode: false
+http_node:
+  username: ''
+  password: ''
+http_static:
+  username: ''
+  password: ''
+ssl: true
+certfile: fullchain.pem
+keyfile: privkey.pem
+require_ssl: true
+system_packages: []
+npm_packages: []
+init_commands: []
