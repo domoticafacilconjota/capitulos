@@ -1,0 +1,11 @@
+#URL
+https://xxxxxxxx.duckdns.org:8124/api/webhook/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#Method
+POST
+
+#Content Type (optional)
+application/json
+
+#Body (optional)
+{ "action": "call_service", "service": "input_boolean.turn_off", "entity_id": "input_boolean.luz_luces_al_amancer_50_dormitorio_principal_casa_grande" }
