@@ -1,0 +1,6 @@
+luz_amanecer_virtual_50_despertador_virtual:
+  name: 'Amanecer virtual'
+  initial: on
+luz_luces_al_amancer_50_dormitorio_principal_casa_grande:
+  name: 'Ejecutar amanecer virtual'
+  initial: off
