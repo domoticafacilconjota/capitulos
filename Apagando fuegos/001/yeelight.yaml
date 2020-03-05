@@ -1,0 +1,5 @@
+devices:
+  192.168.1.40:
+    name: 'Yeelight 1'
+  192.168.1.41:
+    name: 'Yeelight 2'
