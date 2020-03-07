@@ -1,0 +1,205 @@
+[
+    {
+        "id": "49023330.62966c",
+        "type": "smooth",
+        "z": "a3c6cc40.43391",
+        "name": "Sacamos la media",
+        "property": "payload",
+        "action": "mean",
+        "count": "10",
+        "round": "",
+        "mult": "single",
+        "reduce": false,
+        "x": 410,
+        "y": 1640,
+        "wires": [
+            [
+                "5a007662.eefe68"
+            ]
+        ],
+        "info": "Aquí sacamos la media porque algunos CI de medición de consumo no son muy exactos."
+    },
+    {
+        "id": "b05a29a9.763238",
+        "type": "delay",
+        "z": "a3c6cc40.43391",
+        "name": "Tiempo de espera",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 1070,
+        "y": 1580,
+        "wires": [
+            [
+                "48a43d69.fc5ff4"
+            ]
+        ],
+        "info": "Si el temporazidaor llega al final, apaga el dispositivo."
+    },
+    {
+        "id": "5a007662.eefe68",
+        "type": "switch",
+        "z": "a3c6cc40.43391",
+        "name": "Comprobación de vatios",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "15",
+                "vt": "num"
+            },
+            {
+                "t": "gte",
+                "v": "15",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 1580,
+        "wires": [
+            [
+                "35379ca9.4b2ec4"
+            ],
+            [
+                "e29bdd45.d1ef4"
+            ]
+        ],
+        "info": "Si los vatios son inferiores a 15 continuamos, de lo contrario, reseteamos pasamos a resetear el contador modificando una propiedad en el siguiente nodo."
+    },
+    {
+        "id": "e29bdd45.d1ef4",
+        "type": "change",
+        "z": "a3c6cc40.43391",
+        "name": "Mensaje de reset",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "domóticafácilconjota",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 1660,
+        "wires": [
+            [
+                "b05a29a9.763238"
+            ]
+        ],
+        "info": "¿Un falso positivo? No importa, reseteamos el contador y aquí no ha pasado nada xD"
+    },
+    {
+        "id": "48a43d69.fc5ff4",
+        "type": "api-call-service",
+        "z": "a3c6cc40.43391",
+        "name": "Dispositivo que se apaga [CAMBIAR]",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "switch.echufe_tele",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1350,
+        "y": 1660,
+        "wires": [
+            [
+                "e29bdd45.d1ef4"
+            ]
+        ],
+        "info": "Una vez el dispositivo se ha apagado, reseteamos el contador."
+    },
+    {
+        "id": "35379ca9.4b2ec4",
+        "type": "api-current-state",
+        "z": "a3c6cc40.43391",
+        "name": "Dispositivo que se apaga [CAMBIAR]",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.echufe_tele",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 830,
+        "y": 1500,
+        "wires": [
+            [
+                "b05a29a9.763238"
+            ],
+            []
+        ],
+        "info": "Si el dispositivo ya está apagado, paramos aquí... de lo contrario activamos el temporizador de 10 minutos."
+    },
+    {
+        "id": "e1d27635.061208",
+        "type": "server-state-changed",
+        "z": "a3c6cc40.43391",
+        "name": "Sensor vatios [CAMBIAR]",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.echufe_tele_energy_power",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 250,
+        "y": 1580,
+        "wires": [
+            [
+                "49023330.62966c"
+            ]
+        ],
+        "info": "Este sensor nos da el consumo actual del dispositivo."
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant"
+    }
+]
