@@ -1,0 +1,8 @@
+USB A TTL     Shelly1
+GND           GND
+GND           GPIO0
+RX            TX
+TX            RX
+3V3           3V3
+
+Imagen >>> https://github.com/domoticafacilconjota/capitulos/blob/master/S01E19/pines.png
