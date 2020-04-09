@@ -1,0 +1,35 @@
+#eWeLink Base
+Method: POST
+URL: http://IP.DEL.SONOFF.MINI:PUERTO
+Name: Content-Type
+Value: application/json
+
+####eWeLink INFO
+Method: POST
+URL: http://IP.DEL.SONOFF.MINI:PUERTO/zeroconf/info
+Name: Content-Type
+Value: application/json
+Body:
+{ "deviceid": "ID-DEL-SONOFF-MINI", "data": {} }
+
+####eWeLink OTA_UNLOCK
+Method: POST
+URL: http://IP.DEL.SONOFF.MINI:PUERTO/zeroconf/ota_unlock
+Name: Content-Type
+Value: application/json
+Body:
+{ "deviceid": "ID-DEL-SONOFF-MINI", "data": {} }
+
+####eWeLink FLASH
+Method: POST
+URL: http://IP.DEL.SONOFF.MINI:PUERTO/zeroconf/ota_flash
+Name: Content-Type
+Value: application/json
+Body:
+{
+  "deviceid": "10009abcde", 
+  "data": {
+    	"downloadUrl": "http://IP.DEL.SERVIDOR.NGINX/tasmota-lite.bin", 
+    	"sha256sum": "SACADO-DE-https://emn178.github.io/online-tools/sha256_checksum.html"
+  }    
+}
