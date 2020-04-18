@@ -2,7 +2,10 @@
 
 ## Esta no es una guía paso a paso. Para obtener indicaciones paso a paso tienes que ver el vídeo. Aquí sólo se presentan enlaces o configuraciones que aparecen en el vídeo.
 
-Vídeo disponible en [Domótica Fácil](http://https://www.youtube.com/c/domoticafacilconjota "Domótica Fácil"): [youtube.com](https://www.youtube.com/watch?v=3b_UBIt8Z3M "youtube.com")
+Vídeo disponible en [Domótica Fácil](http://https://www.youtube.com/c/domoticafacilconjota "Domótica Fácil"): [youtube.com](https://www.youtube.com/watch?v=3b_UBIt8Z3M "youtube.com"
+
+🟥🟥🟥🟥🟥 ES MUY IMPORTANTE ABRIR EL PUERTO EN EL ROUTER ANTES DE HACER LAS PRUEBAS        🟥🟥🟥🟥🟥
+🟥🟥🟥🟥🟥 LA PARTE DEL VÍDEO EN EL QUE LO HAGO ES ESTA https://youtu.be/3b_UBIt8Z3M?t=957  🟥🟥🟥🟥🟥
 
 **Consola de desarrollador de Amazon**
 https://developer.amazon.com/es/
