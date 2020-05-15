@@ -1,0 +1,3 @@
+zigbee_permit_join:
+  name: Tiempo restante
+  duration: 600
