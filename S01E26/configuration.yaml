@@ -1,0 +1,4 @@
+automation: !include automations.yaml
+input_boolean: !include input_boolean.yaml
+timer: !include timer.yaml
+sensor: !include sensor.yaml
