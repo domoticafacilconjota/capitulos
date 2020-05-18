@@ -1,0 +1,10 @@
+entities:
+  - entity: input_text.zigbee2mqtt_old_name
+  - entity: input_text.zigbee2mqtt_new_name
+  - entity: script.zigbee2mqtt_rename
+  - type: divider
+  - entity: input_text.zigbee2mqtt_remove
+  - entity: script.zigbee2mqtt_remove
+show_header_toggle: false
+title: Z2M Renombrar y Eliminar
+type: entities
