@@ -1,0 +1,2 @@
+input_text: !include input_text.yaml
+script: !include scripts.yaml
