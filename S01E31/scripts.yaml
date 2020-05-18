@@ -1,0 +1,16 @@
+zigbee2mqtt_rename:
+  alias: Renombrar
+  sequence:
+    service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/bridge/config/rename
+      payload_template: "{\n  \"old\": \"{{ states.input_text.zigbee2mqtt_old_name.state\
+        \ | string }}\",\n  \"new\": \"{{ states.input_text.zigbee2mqtt_new_name.state\
+        \ | string }}\"\n}"
+zigbee2mqtt_remove:
+  alias: Eliminar
+  sequence:
+    service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/bridge/config/remove
+      payload_template: '{{ states.input_text.zigbee2mqtt_remove.state | string }}'
