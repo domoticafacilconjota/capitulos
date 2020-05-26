@@ -66,7 +66,7 @@ smart_home:
     exclude_entities:
       - switch.regleta_pc_00_00_01_oficina_interior
   entity_config:
-    switch.regleta_pc_00_00_01_oficina_interior
+    switch.regleta_pc_00_00_01_oficina_interior:
       name: "Regleta de cargadores de la oficina"
       description: "Una descripción completamente innecesaria..."
       display_categories: SMARTPLUG
@@ -88,7 +88,7 @@ smart_home:
     include_entities:
       - input_boolean.regleta_pc_00_00_01_oficina_interior
   entity_config:
-    input_boolean.regleta_pc_00_00_01_oficina_interior
+    input_boolean.regleta_pc_00_00_01_oficina_interior:
       name: "Regleta de cargadores de la oficina"
       description: "Una descripción completamente innecesaria..."
       display_categories: SMARTPLUG
