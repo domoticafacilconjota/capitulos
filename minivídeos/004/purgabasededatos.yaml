@@ -1,4 +1,15 @@
-# Purgar la base de datos
+# Purgar la base de datos en versiones de Home Assistant superiores o iguales a 0.109 [ACTUAL]
+recorder:
+    auto_purge: true
+    purge_keep_days: 15
+    commit_interval: 5
+
+
+# Purgar la base de datos en versiones de Home Assistant inferiores a 0.109 [OBSOLETO]
 recorder:
   purge_keep_days: 15
   purge_interval: 1
+
+
+# NOTA:
+# No copiar y pegar directamente. Selecciona la configuración dependiendo de tu versión de Home Assistant.
