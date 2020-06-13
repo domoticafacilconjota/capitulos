@@ -62,7 +62,7 @@ smart_home:
     include_domains:
       - switch
       - light
-      - groups
+      - group
     exclude_entities:
       - switch.regleta_pc_00_00_01_oficina_interior
   entity_config:
