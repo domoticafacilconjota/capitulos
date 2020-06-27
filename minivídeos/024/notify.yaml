@@ -1,0 +1,3 @@
+- platform: file
+  name: consumo
+  filename: /share/historial/lecturas_de_gasto_electrico.csv
