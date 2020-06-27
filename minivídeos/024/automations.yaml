@@ -1,0 +1,9 @@
+- alias: Valores de consumo a fichero
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      seconds: '/10'
+  action:
+    - service: notify.consumo
+      data_template: 
+        message: '{{now().strftime("%d/%m/%Y %H:%M:%S")}}; {{ states.sensor.efergy_797455.state }}'
