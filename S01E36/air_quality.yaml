@@ -1,0 +1,4 @@
+- platform: xiaomi_miio
+  host: IP.DE.TU.SENSOR
+  token: TOKEN.DE.XIAOMI>>>https://www.youtube.com/watch?v=rTupWdrzS7E
+  name: 'un_nombre_para_identificar_el_dispositivo_en_home_assistant'
