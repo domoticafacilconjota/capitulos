@@ -1,0 +1,3 @@
+homeassistant:
+  external_url: https://TUSUBDOMINIO.duckdns.org:8123
+  internal_url: http://IP.DE.TU.RASPI:8123
