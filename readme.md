@@ -11,6 +11,7 @@ Hoy en día todo cambia muy rápido y no es la primera vez que publico un vídeo
  - 💀 = Este vídeo ya no es válido, pero se mantiene en el canal con fines documentales.
  - 👇 = Este vídeo tiene contenido interesante/adicional en los comentarios.
  - 🛠 = Este vídeo tiene una sección de preguntas y respuestas que debes ver.
+ - 🔔 = Recomendaciones de última hora. 
 
 Todos los tutoriales que verás en Domótica Fácil con Jota son realizados de principio a fin en una Raspberry Pi de pruebas. Esto quiere decir que los tutoriales son válidos (de hecho siempre se realizan pruebas de funcionamientos en los vídeos). Si tienes algún tipo de problema, es que no estás siguiendo los pasos correctamente o bien tienes alguna configuración que interfiere de una u otra forma con el procedimiento estándar. Intenta ver el vídeo o la serie de vídeos al completo antes de comenzar a realizar cambios en tu setup domótico... de esa forma tendrás una visión global de conjunto, podrás tomas mejores decisiones e incluso puede que haga referencia al final de los vídeos a posibles problemas y sus soluciones. Si tras comprobar varias veces que todo está correcto no consigues llegar a buen puerto, notifícamelo en los comentarios y te ayudaré.
 
