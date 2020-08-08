@@ -1,5 +1,6 @@
 [Domótica Fácil con Jota en YouTube][1]
 =======================================
+![Domótica Fácil con Jota en YouTube](https://github.com/domoticafacilconjota/capitulos/blob/master/src/img/header_s1.png)
 
 En este repositorio se mostrará de forma ordenada el contenido de los vídeos del canal Domótica Fácil con Jota en YouTube así como código, enlaces de descarga y en general cualquier tipo de información necesaria para seguir los tutoriales.
 
@@ -57,8 +58,8 @@ Lista de la compra recomendada por Jota:
 - SSD Samsung 860 EVO ⏩ https://amzn.to/3iivpue
 
 ### Flasheando
-ESP8266 / ESP8285 / ESP32 ⏩️ https://s.click.aliexpress.com/e/_dVwKwgV
-CC2530 / CC2531 / CC2531 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_d7nnvoS
+- ESP8266 / ESP8285 / ESP32 ⏩️ https://s.click.aliexpress.com/e/_dVwKwgV
+- CC2530 / CC2531 / CC2531 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_d7nnvoS
 
 ### Pulsadores
 - Pulsador Zigbee Xiaomi WXKG11LM ⏩️ http://s.click.aliexpress.com/e/_dYc8vrM
