@@ -1,5 +1,4 @@
 discovery:
   ignore:
-    - igd
     - homekit
     - yeelight
