@@ -62,7 +62,7 @@ Lista de la compra recomendada por Jota:
 
 ### Flasheando
 - ESP8266 / ESP8285 / ESP32 ⏩️ https://s.click.aliexpress.com/e/_dVwKwgV
-- CC2530 / CC2531 / CC2531 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_d7nnvoS
+- CC2530 / CC2531 / CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_d7nnvoS
 
 ### Pulsadores
 - Pulsador Zigbee Xiaomi WXKG11LM ⏩️ http://s.click.aliexpress.com/e/_dYc8vrM
@@ -77,6 +77,13 @@ Lista de la compra recomendada por Jota:
 
 ### Relés / Interruptores
 - Estoy buscando uno que sea bueno, bonito y barato.
+
+### Coordinadores / Routers Zigbee
+- Coordinador / Router CC2531 KIT COMPLETO ⏩️ https://s.click.aliexpress.com/e/_dVb8FUt
+- Coordinador / Router CC2531 ⏩️ https://s.click.aliexpress.com/e/_d7YmpDf (aseguraos de comprar el CC2531)
+- Router CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_dYmAB8v (el que yo compro)
+- Router CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_dVrzxXL (opción más barata)
+- CC Debuger (necesario para flashear los CC25xx) ⏩️ https://s.click.aliexpress.com/e/_d8LXABP (aseguraos de comprar el que pone CC Debugger)
 
 ### Otros
 - Guantes antiestáticos ⏩️ https://amzn.to/33As857
