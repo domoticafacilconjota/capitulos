@@ -23,7 +23,7 @@ Lista de la compra recomendada por Jota:
 ==================================
 
 ### Bombillas
-- Bombilla Zigbee Xiaomi ZNLDP12LM ⏩️ https://s.click.aliexpress.com/e/_dThMNCt
+- Bombilla Zigbee Xiaomi ZNLDP12LM ⏩️ https://s.click.aliexpress.com/e/_dVDhjKT
 - Bombilla WiFi YeeLight v2 Color ⏩️ https://s.click.aliexpress.com/e/_dTOJcSZ
 
 ### Cámaras
