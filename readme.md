@@ -64,6 +64,11 @@ Lista de la compra recomendada por Jota:
 - ESP8266 / ESP8285 / ESP32 ⏩️ https://s.click.aliexpress.com/e/_dVwKwgV
 - CC2530 / CC2531 / CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_d7nnvoS
 
+### Herramientas
+- Soldador TS100-B2 ⏩️ https://s.click.aliexpress.com/e/_dYykjYu
+	- Fuente de alimentación para TS100-B2 ⏩️ https://s.click.aliexpress.com/e/_d8bqpqL
+	** Vale cualquier fuente de alimentación de 12 a 24 VCC con el vivo positivo.
+
 ### Pulsadores
 - Pulsador Zigbee Xiaomi WXKG11LM ⏩️ http://s.click.aliexpress.com/e/_dYc8vrM
 
