@@ -88,6 +88,7 @@ Lista de la compra recomendada por Jota:
 - Coordinador / Router CC2531 ⏩️ https://s.click.aliexpress.com/e/_d7YmpDf (aseguraos de comprar el CC2531)
 - Router CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_dYmAB8v (el que yo compro)
 - Router CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_dVrzxXL (opción más barata)
+- Fuente CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_dWnyfMt
 - CC Debuger (necesario para flashear los CC25xx) ⏩️ https://s.click.aliexpress.com/e/_d8LXABP (aseguraos de comprar el que pone CC Debugger)
 
 ### Otros
