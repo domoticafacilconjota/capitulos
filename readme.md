@@ -73,7 +73,7 @@ Lista de la compra recomendada por Jota:
 - Pulsador Zigbee Xiaomi WXKG11LM ⏩️ http://s.click.aliexpress.com/e/_dYc8vrM
 
 ### Sensores
-- Sensor Zigbee Temperatura / Humedad Xiaomi WSDCGQ01LM ⏩️ https://s.click.aliexpress.com/e/_dTom7WN
+- Sensor Zigbee Temperatura / Humedad Xiaomi WSDCGQ11LM ⏩️ https://s.click.aliexpress.com/e/_Ao2cgR
 - Sensor Zigbee Puertas Xiaomi AS006CNW01 ⏩️ https://s.click.aliexpress.com/e/_dVPM1uv
 - Sensor Zigbee de movimiento Xiaomi RTCGQ11LM ⏩️ https://s.click.aliexpress.com/e/_dW4hQaE
 - Sensor Zigbee de inundación Xiaomi SJCGQ11LM ⏩️ https://s.click.aliexpress.com/e/_dUnxJ1y
