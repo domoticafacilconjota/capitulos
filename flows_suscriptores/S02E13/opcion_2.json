@@ -1,0 +1,1211 @@
+[
+    {
+        "id": "1458bd5b.645c53",
+        "type": "bigtimer",
+        "z": "619905db.8913ac",
+        "outtopic": "",
+        "outpayload1": "",
+        "outpayload2": "",
+        "name": "Oscuridad - 23:00",
+        "comment": "",
+        "lat": "27.963759",
+        "lon": "-15.578390",
+        "starttime": 5001,
+        "endtime": "1380",
+        "starttime2": 0,
+        "endtime2": 0,
+        "startoff": "0",
+        "endoff": 0,
+        "startoff2": 0,
+        "endoff2": 0,
+        "offs": 0,
+        "outtext1": "",
+        "outtext2": "",
+        "timeout": 1440,
+        "sun": true,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "jan": true,
+        "feb": true,
+        "mar": true,
+        "apr": true,
+        "may": true,
+        "jun": true,
+        "jul": true,
+        "aug": true,
+        "sep": true,
+        "oct": true,
+        "nov": true,
+        "dec": true,
+        "day1": 0,
+        "month1": 0,
+        "day2": 0,
+        "month2": 0,
+        "day3": 0,
+        "month3": 0,
+        "day4": 0,
+        "month4": 0,
+        "day5": 0,
+        "month5": 0,
+        "day6": 0,
+        "month6": 0,
+        "day7": 0,
+        "month7": 0,
+        "day8": 0,
+        "month8": 0,
+        "day9": 0,
+        "month9": 0,
+        "day10": 0,
+        "month10": 0,
+        "day11": 0,
+        "month11": 0,
+        "day12": 0,
+        "month12": 0,
+        "d1": 0,
+        "w1": 0,
+        "d2": 0,
+        "w2": 0,
+        "d3": 0,
+        "w3": 0,
+        "d4": 0,
+        "w4": 0,
+        "d5": 0,
+        "w5": 0,
+        "d6": 0,
+        "w6": 0,
+        "xday1": 0,
+        "xmonth1": 0,
+        "xday2": 0,
+        "xmonth2": 0,
+        "xday3": 0,
+        "xmonth3": 0,
+        "xday4": 0,
+        "xmonth4": 0,
+        "xday5": 0,
+        "xmonth5": 0,
+        "xday6": 0,
+        "xmonth6": 0,
+        "xd1": 0,
+        "xw1": 0,
+        "xd2": 0,
+        "xw2": 0,
+        "xd3": 0,
+        "xw3": 0,
+        "xd4": 0,
+        "xw4": 0,
+        "xd5": 0,
+        "xw5": 0,
+        "xd6": 0,
+        "xw6": 0,
+        "suspend": false,
+        "random": false,
+        "randon1": false,
+        "randoff1": false,
+        "randon2": false,
+        "randoff2": false,
+        "repeat": false,
+        "atstart": true,
+        "odd": false,
+        "even": false,
+        "x": 490,
+        "y": 1860,
+        "wires": [
+            [],
+            [
+                "6c1a5de3.1b06f4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6c1a5de3.1b06f4",
+        "type": "switch",
+        "z": "619905db.8913ac",
+        "name": "⬆OFF/ ⬇ON",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 750,
+        "y": 1860,
+        "wires": [
+            [
+                "ebd6da83.ffa928"
+            ],
+            [
+                "16ad90cc.4d41bf",
+                "6f521436.f2db6c"
+            ]
+        ]
+    },
+    {
+        "id": "291ad851.57d608",
+        "type": "server-state-changed",
+        "z": "619905db.8913ac",
+        "name": "¿Encendida?",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "light.luz_doble_derecha_00_01_00_azotea_exterior",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "seconds",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 610,
+        "y": 2080,
+        "wires": [
+            [
+                "944afc1.fa9cb"
+            ],
+            [
+                "16ad90cc.4d41bf"
+            ]
+        ]
+    },
+    {
+        "id": "78501ea2.2d9c1",
+        "type": "bigtimer",
+        "z": "619905db.8913ac",
+        "outtopic": "",
+        "outpayload1": "",
+        "outpayload2": "",
+        "name": "23:00 - Oscuridad",
+        "comment": "",
+        "lat": "27.963759",
+        "lon": "-15.578390",
+        "starttime": "1380",
+        "endtime": "5001",
+        "starttime2": 0,
+        "endtime2": 0,
+        "startoff": "0",
+        "endoff": 0,
+        "startoff2": 0,
+        "endoff2": 0,
+        "offs": 0,
+        "outtext1": "",
+        "outtext2": "",
+        "timeout": 1440,
+        "sun": true,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "jan": true,
+        "feb": true,
+        "mar": true,
+        "apr": true,
+        "may": true,
+        "jun": true,
+        "jul": true,
+        "aug": true,
+        "sep": true,
+        "oct": true,
+        "nov": true,
+        "dec": true,
+        "day1": 0,
+        "month1": 0,
+        "day2": 0,
+        "month2": 0,
+        "day3": 0,
+        "month3": 0,
+        "day4": 0,
+        "month4": 0,
+        "day5": 0,
+        "month5": 0,
+        "day6": 0,
+        "month6": 0,
+        "day7": 0,
+        "month7": 0,
+        "day8": 0,
+        "month8": 0,
+        "day9": 0,
+        "month9": 0,
+        "day10": 0,
+        "month10": 0,
+        "day11": 0,
+        "month11": 0,
+        "day12": 0,
+        "month12": 0,
+        "d1": 0,
+        "w1": 0,
+        "d2": 0,
+        "w2": 0,
+        "d3": 0,
+        "w3": 0,
+        "d4": 0,
+        "w4": 0,
+        "d5": 0,
+        "w5": 0,
+        "d6": 0,
+        "w6": 0,
+        "xday1": 0,
+        "xmonth1": 0,
+        "xday2": 0,
+        "xmonth2": 0,
+        "xday3": 0,
+        "xmonth3": 0,
+        "xday4": 0,
+        "xmonth4": 0,
+        "xday5": 0,
+        "xmonth5": 0,
+        "xday6": 0,
+        "xmonth6": 0,
+        "xd1": 0,
+        "xw1": 0,
+        "xd2": 0,
+        "xw2": 0,
+        "xd3": 0,
+        "xw3": 0,
+        "xd4": 0,
+        "xw4": 0,
+        "xd5": 0,
+        "xw5": 0,
+        "xd6": 0,
+        "xw6": 0,
+        "suspend": false,
+        "random": false,
+        "randon1": false,
+        "randoff1": false,
+        "randon2": false,
+        "randoff2": false,
+        "repeat": false,
+        "atstart": false,
+        "odd": false,
+        "even": false,
+        "x": 950,
+        "y": 2180,
+        "wires": [
+            [],
+            [
+                "adfaa468.b633f8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "adfaa468.b633f8",
+        "type": "switch",
+        "z": "619905db.8913ac",
+        "name": "⬆OFF/ ⬇ON",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1150,
+        "y": 2140,
+        "wires": [
+            [],
+            [
+                "e26f0cee.2eeb8"
+            ]
+        ]
+    },
+    {
+        "id": "e26f0cee.2eeb8",
+        "type": "delay",
+        "z": "619905db.8913ac",
+        "name": "Esperar 20 segundos",
+        "pauseType": "delay",
+        "timeout": "20",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1380,
+        "y": 2140,
+        "wires": [
+            [
+                "c1469723.25ad68"
+            ]
+        ]
+    },
+    {
+        "id": "c1469723.25ad68",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Apagar",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.luz_doble_derecha_00_01_00_azotea_exterior",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1580,
+        "y": 2140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "16ad90cc.4d41bf",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "Resetear delay",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "now",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 2020,
+        "wires": [
+            [
+                "e26f0cee.2eeb8"
+            ]
+        ]
+    },
+    {
+        "id": "6f521436.f2db6c",
+        "type": "api-current-state",
+        "z": "619905db.8913ac",
+        "name": "¿Encendida?",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.luz_doble_derecha_00_01_00_azotea_exterior",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 990,
+        "y": 1940,
+        "wires": [
+            [
+                "bcdf4532.2fc4f8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "bcdf4532.2fc4f8",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Encender",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_doble_derecha_00_01_00_azotea_exterior",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1180,
+        "y": 1940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ebd6da83.ffa928",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Apagar",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.luz_doble_derecha_00_01_00_azotea_exterior",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1000,
+        "y": 1780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "944afc1.fa9cb",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "Sincronizar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "sync",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 2140,
+        "wires": [
+            [
+                "78501ea2.2d9c1"
+            ]
+        ]
+    },
+    {
+        "id": "1618abad.e8dd24",
+        "type": "server-state-changed",
+        "z": "619905db.8913ac",
+        "name": "IB",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_boolean.desactivar_luces_automaticas",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 230,
+        "y": 2080,
+        "wires": [
+            [
+                "89bfb3c1.6f97"
+            ],
+            [
+                "d331726.1b4e59"
+            ]
+        ]
+    },
+    {
+        "id": "89bfb3c1.6f97",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "Parar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "stop",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 2040,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "d331726.1b4e59",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "Auto",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "auto",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 2120,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "6658abaa.0cf454",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Dentro de rango",
+        "info": "Cambia el Entity ID por el identificador de tu entidad",
+        "x": 740,
+        "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "e42072f4.b833d",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Dawn = Amanecer\nDusk = Oscuridad\nSolarnoon = Mediodía\nSunrise = Amanecer\nSunset = Anochecer\nNight = Noche cerrada\nNightend = Fin de la noche\n",
+        "x": 520,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "7fdb87d3.7a68f8",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modificad Forzar a un valor más alto si queréis.\n",
+        "x": 220,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "1c085ee1.d22881",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Fuera de rango",
+        "info": "Cambia el Entity ID por el identificador de tu entidad",
+        "x": 740,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "788011d2.4a514",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Cambia el Entity ID por el identificador de tu entidad",
+        "x": 1000,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "3f1829fe.e27ef6",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Cambia el Entity ID por el identificador de tu entidad",
+        "x": 1000,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "4b7b112e.dc8c3",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Cambia el Entity ID por el identificador de tu entidad",
+        "x": 1180,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "1fe72ff0.6ed55",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Cambia el tiempo que deseas que la bombilla permanezca encendida",
+        "x": 1420,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "bfbc36b9.39b768",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Dawn = Amanecer\nDusk = Oscuridad\nSolarnoon = Mediodía\nSunrise = Amanecer\nSunset = Anochecer\nNight = Noche cerrada\nNightend = Fin de la noche\n",
+        "x": 620,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "884ea75.5f53858",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Encender",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_doble_derecha_00_01_00_azotea_exterior",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 980,
+        "y": 2340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "959efd04.72bc4",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Apagar",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.luz_doble_derecha_00_01_00_azotea_exterior",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 980,
+        "y": 2400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "688971eb.bdc6f",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 800,
+        "y": 2340,
+        "wires": [
+            [
+                "884ea75.5f53858"
+            ]
+        ]
+    },
+    {
+        "id": "cb80866d.636798",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 800,
+        "y": 2400,
+        "wires": [
+            [
+                "959efd04.72bc4"
+            ]
+        ]
+    },
+    {
+        "id": "16a86199.f6daee",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 2420,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "a0313da7.6bc67",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 2460,
+        "wires": [
+            [
+                "78501ea2.2d9c1"
+            ]
+        ]
+    },
+    {
+        "id": "f16e2ce9.e93aa",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 2560,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "1837bc6d.56dcb4",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 2600,
+        "wires": [
+            [
+                "78501ea2.2d9c1"
+            ]
+        ]
+    },
+    {
+        "id": "2da92e0e.846fc2",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "d": true,
+        "name": "Forzar",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "sync",
+        "payloadType": "str",
+        "x": 220,
+        "y": 2180,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "1f1e3120.a24d9f",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modificad Forzar a un valor más alto si queréis.\n",
+        "x": 220,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "96ff2295.e9268",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar en rango",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 200,
+        "y": 2280,
+        "wires": [
+            [
+                "78501ea2.2d9c1"
+            ]
+        ]
+    },
+    {
+        "id": "650273b0.8b5cec",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar fuera de rango",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 180,
+        "y": 2340,
+        "wires": [
+            [
+                "78501ea2.2d9c1"
+            ]
+        ]
+    },
+    {
+        "id": "525d5b5b.7838d4",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar en rango CONJUNTO",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 180,
+        "y": 2580,
+        "wires": [
+            [
+                "f16e2ce9.e93aa",
+                "1837bc6d.56dcb4"
+            ]
+        ]
+    },
+    {
+        "id": "678e4344.35de7c",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar fuera rango CONJUNTO",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 170,
+        "y": 2440,
+        "wires": [
+            [
+                "16a86199.f6daee",
+                "a0313da7.6bc67"
+            ]
+        ]
+    },
+    {
+        "id": "d7fd6115.5312a",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar en rango",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 200,
+        "y": 1740,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "4cf1291f.5c3838",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar fuera de rango",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 180,
+        "y": 1800,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "4a831ba3.d3b954",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Automático",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "auto",
+        "payloadType": "str",
+        "x": 220,
+        "y": 1860,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "f31bbdea.dffd3",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Manual",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "manual",
+        "payloadType": "str",
+        "x": 230,
+        "y": 1920,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "35e33119.c1b40e",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Parar",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "stop",
+        "payloadType": "str",
+        "x": 230,
+        "y": 1980,
+        "wires": [
+            [
+                "1458bd5b.645c53"
+            ]
+        ]
+    },
+    {
+        "id": "cada26d3.dc2798",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Opción 2",
+        "info": "Modificad Forzar a un valor más alto si queréis.\n",
+        "x": 220,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant"
+    }
+]
