@@ -1,0 +1,5 @@
+Comprobar Python 🔹 python --version (también pyhon3 --version)
+Comprobar Git 🔹 git --version
+Clonar (descargar) repositorio 🔹 git clone https://github.com/JelmerT/cc2538-bsl.git
+Entrar al directorio 🔹 cd cc2538-bsl
+Ver contenido 🔹 dir
