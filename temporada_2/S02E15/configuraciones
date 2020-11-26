@@ -1,0 +1,9 @@
+Tamota OTA URL 🔹 http://ota.tasmota.com/tasmota/tasmota.bin
+---
+Estructura recomendada para MQTT 🔹 %prefix%/%topic%/
+---
+SwitchTopic nombre_único 🔹 Hacer detach (despegar) el relé del interruptor
+SwitchTopic 0 🔹 Hacer attach (pegar) el relé con el interruptor
+---
+PowerOnState ON 🔹 Hacer que el relé se active al recibir alimentación el Shelly 1
+PowerOnState OFF 🔹 Hacer que el relé permanezca desactivado al recibir alimentación el Shelly 1
