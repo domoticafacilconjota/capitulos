@@ -4,6 +4,8 @@ Estructura recomendada para MQTT 🔹 %prefix%/%topic%/
 ---
 SwitchTopic nombre_único 🔹 Hacer detach (despegar) el relé del interruptor
 SwitchTopic 0 🔹 Hacer attach (pegar) el relé con el interruptor
+
+Si tienes un dispositivo con más de un relé (por ejemplo un Shelly 2.5) debes utilizar SwitchTopic1 XXX para el relé número uno y SwitchTopic2 XXX para el relé número 2
 ---
 PowerOnState ON 🔹 Hacer que el relé se active al recibir alimentación el Shelly 1
 PowerOnState OFF 🔹 Hacer que el relé permanezca desactivado al recibir alimentación el Shelly 1
