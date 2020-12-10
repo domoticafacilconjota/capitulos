@@ -1,0 +1,6 @@
+- platform: rpi_gpio_pwm
+  leds:
+    - name: Ventilador Raspi
+      driver: gpio
+      pins: [14]
+      type: simple
