@@ -35,8 +35,6 @@ entities:
   - entity: sensor.memory_use
   - entity: sensor.processor_use_percent
   - entity: sensor.last_boot
-  - entity: light.ventilador_raspi
-  - entity: input_boolean.activar_ventilador_raspi
 show_header_toggle: false
 title: Raspi
 type: entities
