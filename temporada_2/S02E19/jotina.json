@@ -1,0 +1,389 @@
+[
+    {
+        "id": "866702aa.65d5e",
+        "type": "inject",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Comprobar temperatura",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 300,
+        "wires": [
+            [
+                "f88aeeff.0e0d2"
+            ]
+        ]
+    },
+    {
+        "id": "f88aeeff.0e0d2",
+        "type": "api-current-state",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "¿Refrigeración activada?",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "input_boolean.activar_ventilador_raspi",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 630,
+        "y": 300,
+        "wires": [
+            [
+                "e6595b31.82b6f8"
+            ],
+            [
+                "47f36340.b0cb4c"
+            ]
+        ]
+    },
+    {
+        "id": "e6595b31.82b6f8",
+        "type": "api-current-state",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Temperatura CPU",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "sensor.temperatura_cpu",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 880,
+        "y": 260,
+        "wires": [
+            [
+                "36d0f250.cfc09e"
+            ]
+        ]
+    },
+    {
+        "id": "36d0f250.cfc09e",
+        "type": "switch",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "60",
+                "vt": "str"
+            },
+            {
+                "t": "btwn",
+                "v": "61",
+                "vt": "num",
+                "v2": "65",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "66",
+                "vt": "num",
+                "v2": "70",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "71",
+                "vt": "num",
+                "v2": "75",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "76",
+                "vt": "num",
+                "v2": "80",
+                "v2t": "num"
+            },
+            {
+                "t": "gte",
+                "v": "81",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 1110,
+        "y": 260,
+        "wires": [
+            [
+                "1644558e.84e4ea"
+            ],
+            [
+                "ce4b05dd.f11988"
+            ],
+            [
+                "d2cc28b7.154908"
+            ],
+            [
+                "2a6f197f.75c196"
+            ],
+            [
+                "aab618a4.7ff448"
+            ],
+            [
+                "e1cc28c2.490688"
+            ]
+        ]
+    },
+    {
+        "id": "1644558e.84e4ea",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Apagar ventilador",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.ventilador_raspi",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1360,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce4b05dd.f11988",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Ventilador al 15%",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.ventilador_raspi",
+        "data": "{\"brightness_pct\": 15}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1360,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "47f36340.b0cb4c",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Apagar ventilador",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.ventilador_raspi",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 880,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d2cc28b7.154908",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Ventilador al 30%",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.ventilador_raspi",
+        "data": "{\"brightness_pct\": 30}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1360,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a6f197f.75c196",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Ventilador al 50%",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.ventilador_raspi",
+        "data": "{\"brightness_pct\": 50}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1360,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aab618a4.7ff448",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Ventilador al 75%",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.ventilador_raspi",
+        "data": "{\"brightness_pct\": 75}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1360,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1cc28c2.490688",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Ventilador al 100%",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.ventilador_raspi",
+        "data": "{\"brightness_pct\": 100}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1360,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d2d544d.4155fc",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar los segundos para realizar la comprobación.",
+        "x": 310,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "687101c9.b8055",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar el input boolean que activa o desactiva toda la automatización.",
+        "x": 590,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f7e5c1e5.7b47e",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar el sensor que lee la temperatura de la CPU",
+        "x": 850,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "edd1ace4.9c74c",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar la \"light\" que regula la velocidad/estado del ventilador",
+        "x": 850,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "2656a879.9f3a08",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar los rangos de temperatura si no te gustan los que he utilizado.",
+        "x": 1110,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "45b09a87.871e24",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la \"light\" que regula la velocidad/estado del ventilador.",
+        "x": 1340,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
