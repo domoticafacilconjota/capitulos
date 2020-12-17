@@ -1,0 +1,39 @@
+#########################################
+##                NUC                  ##
+##            sensor.yaml              ##
+#########################################
+# Monitor de sistema NUC
+- platform: systemmonitor
+  resources:
+    - type: disk_free
+      arg: /
+    - type: disk_use_percent
+      arg: /
+    - type: memory_free
+    - type: processor_use
+    - type: memory_use
+    - type: last_boot
+
+# Sensor Temperatura 
+- platform: command_line
+  name: Temperatura CPU
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+#########################################
+##                 NUC                 ##
+##          Tarjeta Lovelace           ##
+#########################################
+
+entities:
+  - entity: sensor.temperatura_cpu
+  - entity: sensor.disk_free
+  - entity: sensor.disk_use_percent
+  - entity: sensor.memory_free
+  - entity: sensor.memory_use
+  - entity: sensor.processor_use
+  - entity: sensor.last_boot
+show_header_toggle: false
+title: Intel NUC
+type: entities
