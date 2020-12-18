@@ -1,0 +1,746 @@
+[
+    {
+        "id": "488d178f.1e9428",
+        "type": "server-state-changed",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Clicks",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.pulsador_mesa_de_noche_00_01_00_dormitorio_de_invitados_azotea_click",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 110,
+        "y": 3100,
+        "wires": [
+            [
+                "dfa7ffc4.aa74"
+            ]
+        ]
+    },
+    {
+        "id": "dfa7ffc4.aa74",
+        "type": "switch",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Tipo de click",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "single",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "double",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "triple",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "quadruple",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 330,
+        "y": 3100,
+        "wires": [
+            [
+                "a0e8321a.b8d5a"
+            ],
+            [
+                "ebdb048a.50c8d8"
+            ],
+            [],
+            [
+                "99b97af2.2baaa8"
+            ]
+        ]
+    },
+    {
+        "id": "c5e5f8a5.d8d098",
+        "type": "inject",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "single",
+        "payloadType": "str",
+        "x": 130,
+        "y": 3200,
+        "wires": [
+            [
+                "dfa7ffc4.aa74"
+            ]
+        ]
+    },
+    {
+        "id": "22b87c72.d23384",
+        "type": "inject",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "double",
+        "payloadType": "str",
+        "x": 130,
+        "y": 3240,
+        "wires": [
+            [
+                "dfa7ffc4.aa74"
+            ]
+        ]
+    },
+    {
+        "id": "7809093f.31f388",
+        "type": "inject",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "triple",
+        "payloadType": "str",
+        "x": 130,
+        "y": 3280,
+        "wires": [
+            [
+                "dfa7ffc4.aa74"
+            ]
+        ]
+    },
+    {
+        "id": "d5cdb31f.24087",
+        "type": "inject",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "quadruple",
+        "payloadType": "str",
+        "x": 140,
+        "y": 3320,
+        "wires": [
+            [
+                "dfa7ffc4.aa74"
+            ]
+        ]
+    },
+    {
+        "id": "a0e8321a.b8d5a",
+        "type": "api-current-state",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Estado de la bombilla",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_1",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 560,
+        "y": 2960,
+        "wires": [
+            [
+                "24cbd0eb.32f4b"
+            ]
+        ]
+    },
+    {
+        "id": "24cbd0eb.32f4b",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Obtener brillo actual",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "data.attributes.brightness",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 2960,
+        "wires": [
+            [
+                "87091662.f0a7f8"
+            ]
+        ]
+    },
+    {
+        "id": "87091662.f0a7f8",
+        "type": "range",
+        "z": "2ed4f6b9.cfa7ca",
+        "minin": "0",
+        "maxin": "255",
+        "minout": "0",
+        "maxout": "100",
+        "action": "clamp",
+        "round": true,
+        "property": "payload",
+        "name": "",
+        "x": 950,
+        "y": 2960,
+        "wires": [
+            [
+                "5b323b75.75c154"
+            ]
+        ]
+    },
+    {
+        "id": "5b323b75.75c154",
+        "type": "switch",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "0",
+                "vt": "num",
+                "v2": "49",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "50",
+                "vt": "num",
+                "v2": "75",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "76",
+                "vt": "num",
+                "v2": "100",
+                "v2t": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 1070,
+        "y": 2960,
+        "wires": [
+            [
+                "4b4889f.7627578"
+            ],
+            [
+                "4bfd2cf6.ca86d4"
+            ],
+            [
+                "1e16d62b.64eeba"
+            ],
+            [
+                "6d7ac1d0.dc23b"
+            ]
+        ]
+    },
+    {
+        "id": "c03a8625.52c978",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Cambiar brillo",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1",
+        "data": "{    \"brightness_pct\": {{payload}}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1440,
+        "y": 2960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b4889f.7627578",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "50%",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "50",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 2860,
+        "wires": [
+            [
+                "c03a8625.52c978"
+            ]
+        ]
+    },
+    {
+        "id": "4bfd2cf6.ca86d4",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "76%",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "76",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 2920,
+        "wires": [
+            [
+                "c03a8625.52c978"
+            ]
+        ]
+    },
+    {
+        "id": "1e16d62b.64eeba",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "100%",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "100",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 3000,
+        "wires": [
+            [
+                "c03a8625.52c978"
+            ]
+        ]
+    },
+    {
+        "id": "ebdb048a.50c8d8",
+        "type": "api-current-state",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Estado de la bombilla",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_1",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 560,
+        "y": 3200,
+        "wires": [
+            [
+                "a146a535.7988e8"
+            ]
+        ]
+    },
+    {
+        "id": "a146a535.7988e8",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Obtener brillo actual",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "data.attributes.brightness",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 3200,
+        "wires": [
+            [
+                "5f63902c.9cc65"
+            ]
+        ]
+    },
+    {
+        "id": "5f63902c.9cc65",
+        "type": "range",
+        "z": "2ed4f6b9.cfa7ca",
+        "minin": "0",
+        "maxin": "255",
+        "minout": "0",
+        "maxout": "100",
+        "action": "clamp",
+        "round": true,
+        "property": "payload",
+        "name": "",
+        "x": 950,
+        "y": 3200,
+        "wires": [
+            [
+                "1ca10dc5.ebeea2"
+            ]
+        ]
+    },
+    {
+        "id": "1ca10dc5.ebeea2",
+        "type": "switch",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "100",
+                "vt": "num",
+                "v2": "77",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "76",
+                "vt": "num",
+                "v2": "51",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "50",
+                "vt": "num",
+                "v2": "0",
+                "v2t": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1070,
+        "y": 3200,
+        "wires": [
+            [
+                "6245c8c6.aacc68"
+            ],
+            [
+                "dde3d744.aaf608"
+            ],
+            [
+                "d52b86d5.4661d8"
+            ]
+        ]
+    },
+    {
+        "id": "1de24cbd.23ff13",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Cambiar brillo",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1",
+        "data": "{    \"brightness_pct\": {{payload}}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1440,
+        "y": 3200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6245c8c6.aacc68",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "76%",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "76",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 3140,
+        "wires": [
+            [
+                "1de24cbd.23ff13"
+            ]
+        ]
+    },
+    {
+        "id": "dde3d744.aaf608",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "50%",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "50",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 3200,
+        "wires": [
+            [
+                "1de24cbd.23ff13"
+            ]
+        ]
+    },
+    {
+        "id": "d52b86d5.4661d8",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "25%",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "25",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 3260,
+        "wires": [
+            [
+                "1de24cbd.23ff13"
+            ]
+        ]
+    },
+    {
+        "id": "99b97af2.2baaa8",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Apagar bombilla",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 440,
+        "y": 3320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d7ac1d0.dc23b",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "50%",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "50",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 3060,
+        "wires": [
+            [
+                "c03a8625.52c978"
+            ]
+        ]
+    },
+    {
+        "id": "758debf.889af14",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID del sensor que nos da el tipo de clic.",
+        "x": 120,
+        "y": 3040,
+        "wires": []
+    },
+    {
+        "id": "bb973cc5.7d09d",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la light que nos el brillo actual.",
+        "x": 520,
+        "y": 2900,
+        "wires": []
+    },
+    {
+        "id": "af7af615.5cd3b8",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la light que nos el brillo actual.",
+        "x": 520,
+        "y": 3140,
+        "wires": []
+    },
+    {
+        "id": "af3241da.d45ff",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la light a la que queremos hacer una modificació del brillo.",
+        "x": 1420,
+        "y": 2900,
+        "wires": []
+    },
+    {
+        "id": "68e0d5ba.8eb34c",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la light a la que queremos hacer una modificació del brillo.",
+        "x": 1420,
+        "y": 3140,
+        "wires": []
+    },
+    {
+        "id": "6ac88b2.e19d474",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la light que queremos apagar.",
+        "x": 420,
+        "y": 3280,
+        "wires": []
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant"
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
