@@ -1,0 +1,884 @@
+[
+    {
+        "id": "9dd6476f.a81078",
+        "type": "server-state-changed",
+        "z": "50e5612f.3fc45",
+        "name": "Clicks",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.pulsador_mesa_de_noche_a_00_01_00_dormitorio_de_invitados_azotea_click",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "75709675.060998"
+            ]
+        ]
+    },
+    {
+        "id": "75709675.060998",
+        "type": "switch",
+        "z": "50e5612f.3fc45",
+        "name": "Tipo de click",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "single",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "double",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "triple",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "quadruple",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 670,
+        "y": 360,
+        "wires": [
+            [
+                "5d2a8b3e.ac9cb4"
+            ],
+            [
+                "3b14e622.28ba8a"
+            ],
+            [],
+            [
+                "ba0593ac.22d92"
+            ]
+        ]
+    },
+    {
+        "id": "bea7acac.436c4",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "single",
+        "payloadType": "str",
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "75709675.060998"
+            ]
+        ]
+    },
+    {
+        "id": "71ee9975.019e38",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "double",
+        "payloadType": "str",
+        "x": 470,
+        "y": 500,
+        "wires": [
+            [
+                "75709675.060998"
+            ]
+        ]
+    },
+    {
+        "id": "b4a196f8.1ce788",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "triple",
+        "payloadType": "str",
+        "x": 470,
+        "y": 540,
+        "wires": [
+            [
+                "75709675.060998"
+            ]
+        ]
+    },
+    {
+        "id": "768f9f68.0b553",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "quadruple",
+        "payloadType": "str",
+        "x": 480,
+        "y": 580,
+        "wires": [
+            [
+                "75709675.060998"
+            ]
+        ]
+    },
+    {
+        "id": "5d2a8b3e.ac9cb4",
+        "type": "api-current-state",
+        "z": "50e5612f.3fc45",
+        "name": "Estado de la bombilla 1",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_1",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 910,
+        "y": 180,
+        "wires": [
+            [
+                "df994573.6e9da8"
+            ],
+            [
+                "26384d86.4500f2"
+            ]
+        ]
+    },
+    {
+        "id": "3b14e622.28ba8a",
+        "type": "api-current-state",
+        "z": "50e5612f.3fc45",
+        "name": "Estado de la bombilla 1",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_1",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 910,
+        "y": 340,
+        "wires": [
+            [
+                "399d3181.3eee1e"
+            ],
+            [
+                "5676fa94.509b94"
+            ]
+        ]
+    },
+    {
+        "id": "df994573.6e9da8",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Encender 1",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1130,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26384d86.4500f2",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Apagar 1",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1120,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "399d3181.3eee1e",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Encender 1 y 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1, light.yeelight_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1140,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5676fa94.509b94",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Apagar 1 y 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1, light.yeelight_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1130,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ba0593ac.22d92",
+        "type": "api-current-state",
+        "z": "50e5612f.3fc45",
+        "name": "Estado de la bombilla 1",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_1",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 910,
+        "y": 540,
+        "wires": [
+            [
+                "483fc2de.fe0ccc"
+            ],
+            [
+                "f4d4e0b7.dc4e3"
+            ]
+        ]
+    },
+    {
+        "id": "483fc2de.fe0ccc",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Encender 1, 2 y 3",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1, light.yeelight_2, light.yeelight_3",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1150,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f4d4e0b7.dc4e3",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Apagar 1, 2 y 3",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1, light.yeelight_2, light.yeelight_3",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1140,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6510dfb4.92364",
+        "type": "server-state-changed",
+        "z": "50e5612f.3fc45",
+        "name": "Clicks",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.pulsador_mesa_de_noche_b_00_01_00_dormitorio_de_invitados_azotea_click",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 450,
+        "y": 900,
+        "wires": [
+            [
+                "70d6e1c2.b4559"
+            ]
+        ]
+    },
+    {
+        "id": "70d6e1c2.b4559",
+        "type": "switch",
+        "z": "50e5612f.3fc45",
+        "name": "Tipo de click",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "single",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "double",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "triple",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "quadruple",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 670,
+        "y": 900,
+        "wires": [
+            [
+                "76a73b67.6fa5a4"
+            ],
+            [
+                "5b4b7103.5ec66"
+            ],
+            [],
+            [
+                "aff54a6.e36f5b8"
+            ]
+        ]
+    },
+    {
+        "id": "46e3fea7.04b05",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "single",
+        "payloadType": "str",
+        "x": 470,
+        "y": 1000,
+        "wires": [
+            [
+                "70d6e1c2.b4559"
+            ]
+        ]
+    },
+    {
+        "id": "b90fc7c.405f238",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "double",
+        "payloadType": "str",
+        "x": 470,
+        "y": 1040,
+        "wires": [
+            [
+                "70d6e1c2.b4559"
+            ]
+        ]
+    },
+    {
+        "id": "69655048.c383",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "triple",
+        "payloadType": "str",
+        "x": 470,
+        "y": 1080,
+        "wires": [
+            [
+                "70d6e1c2.b4559"
+            ]
+        ]
+    },
+    {
+        "id": "acb12f9c.dcb46",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "quadruple",
+        "payloadType": "str",
+        "x": 480,
+        "y": 1120,
+        "wires": [
+            [
+                "70d6e1c2.b4559"
+            ]
+        ]
+    },
+    {
+        "id": "76a73b67.6fa5a4",
+        "type": "api-current-state",
+        "z": "50e5612f.3fc45",
+        "name": "Estado de la bombilla 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_2",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 910,
+        "y": 720,
+        "wires": [
+            [
+                "a51f7d12.4123a"
+            ],
+            [
+                "1e98f1c2.7a6cae"
+            ]
+        ]
+    },
+    {
+        "id": "5b4b7103.5ec66",
+        "type": "api-current-state",
+        "z": "50e5612f.3fc45",
+        "name": "Estado de la bombilla 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_2",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 910,
+        "y": 880,
+        "wires": [
+            [
+                "9c66965.79aa768"
+            ],
+            [
+                "51ce268d.cf9cd8"
+            ]
+        ]
+    },
+    {
+        "id": "a51f7d12.4123a",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Encender 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1130,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e98f1c2.7a6cae",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Apagar 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1120,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c66965.79aa768",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Encender 1 y 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1, light.yeelight_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1140,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "51ce268d.cf9cd8",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Apagar 1 y 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1, light.yeelight_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1130,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aff54a6.e36f5b8",
+        "type": "api-current-state",
+        "z": "50e5612f.3fc45",
+        "name": "Estado de la bombilla 2",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.yeelight_2",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 910,
+        "y": 1080,
+        "wires": [
+            [
+                "ff679b48.ae2258"
+            ],
+            [
+                "c55db261.c4b14"
+            ]
+        ]
+    },
+    {
+        "id": "ff679b48.ae2258",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Encender 1, 2 y 3",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1, light.yeelight_2, light.yeelight_3",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1150,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c55db261.c4b14",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Apagar 1, 2 y 3",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1, light.yeelight_2, light.yeelight_3",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1140,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7156c097.68926",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Modificar Entity ID del sensor que nos da el tipo de clic.",
+        "x": 460,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ee1778b4.4a8938",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Modificar todos los Entity ID de la light que nos el brillo actual de esta columna.",
+        "x": 860,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "9fa85202.33a32",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Modificar todos los Entity ID de la light que queremos encender o apagar de esta columna.",
+        "x": 1120,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant"
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
