@@ -1,0 +1,294 @@
+[
+    {
+        "id": "4f1fc14c.911f8",
+        "type": "server-state-changed",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Tiempo restante",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_number.slider_prueba",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 180,
+        "y": 1520,
+        "wires": [
+            [
+                "d300d9d4.cb5468"
+            ]
+        ]
+    },
+    {
+        "id": "d300d9d4.cb5468",
+        "type": "switch",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 370,
+        "y": 1520,
+        "wires": [
+            [
+                "35272988.602ee6"
+            ],
+            [
+                "8c2c177.7ab85e8"
+            ],
+            [
+                "6c87e331.1ecf6c"
+            ]
+        ]
+    },
+    {
+        "id": "8c2c177.7ab85e8",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Apagar entidad",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.yeelight_1, light.yeelight_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 580,
+        "y": 1440,
+        "wires": [
+            [
+                "35272988.602ee6",
+                "d204016c.a9a5"
+            ]
+        ]
+    },
+    {
+        "id": "6c87e331.1ecf6c",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Encender entidad",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.yeelight_1, light.yeelight_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 590,
+        "y": 1600,
+        "wires": [
+            [
+                "1cfa05f5.71915a"
+            ]
+        ]
+    },
+    {
+        "id": "1cfa05f5.71915a",
+        "type": "delay",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "1 minuto",
+        "pauseType": "delay",
+        "timeout": "60",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 800,
+        "y": 1600,
+        "wires": [
+            [
+                "9106e64d.a0e3c8"
+            ]
+        ]
+    },
+    {
+        "id": "35272988.602ee6",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Resetear delay",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "true",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 1480,
+        "wires": [
+            [
+                "1cfa05f5.71915a"
+            ]
+        ]
+    },
+    {
+        "id": "9106e64d.a0e3c8",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Bajar un minuto",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "input_number",
+        "service": "decrement",
+        "entityId": "input_number.slider_prueba",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 980,
+        "y": 1600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d204016c.a9a5",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Bajar un minuto",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "input_number",
+        "service": "decrement",
+        "entityId": "input_number.slider_prueba",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 980,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15c3ef6b.20f4f1",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID del input_number que hace la veces de cuenta atrás.",
+        "x": 160,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "4fecead4.530214",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID del input_number que hace la veces de cuenta atrás.",
+        "x": 960,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "74e53c39.b2b0d4",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID del input_number que hace la veces de cuenta atrás.",
+        "x": 960,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "36e3fa2d.ff7c66",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la entidad que queremos apagar transcurrida la cuenta atrás.",
+        "x": 560,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "5f864a.b0e6c9b8",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la entidad que queremos encender transcurrida la cuenta atrás.",
+        "x": 560,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
