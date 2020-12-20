@@ -1,0 +1,5 @@
+slider_prueba:
+  name: Selector de tiempo
+  min: -1
+  max: 60
+  step: 1
