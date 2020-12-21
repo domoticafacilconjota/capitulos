@@ -1,0 +1,257 @@
+[
+    {
+        "id": "42cafe7c.cf4d1",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Encender luz",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_todas_las_luces_00_01_00_azotea_exterior",
+        "data": "{\"kelvin\":2200,\"brightness\":128}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 830,
+        "y": 1980,
+        "wires": [
+            [
+                "f137f775.14bfc8"
+            ]
+        ]
+    },
+    {
+        "id": "8cc4c483.a1e708",
+        "type": "delay",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "60",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 840,
+        "y": 2160,
+        "wires": [
+            [
+                "b45a12d.55fa0f"
+            ]
+        ]
+    },
+    {
+        "id": "b45a12d.55fa0f",
+        "type": "api-call-service",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Apagar luz",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.luz_todas_las_luces_00_01_00_azotea_exterior",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1010,
+        "y": 2160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f137f775.14bfc8",
+        "type": "change",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Resetear delay",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "now",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1020,
+        "y": 1980,
+        "wires": [
+            [
+                "8cc4c483.a1e708"
+            ]
+        ]
+    },
+    {
+        "id": "11599598.ec5bca",
+        "type": "server-state-changed",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Puerta azotea",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "binary_sensor.magnetico_puerta_00_01_00_luni_azotea",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 410,
+        "y": 2020,
+        "wires": [
+            [
+                "23731fda.31319"
+            ],
+            [
+                "5dc35cb0.979394"
+            ]
+        ]
+    },
+    {
+        "id": "23731fda.31319",
+        "type": "time-range-switch",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Oscuridad",
+        "lat": "27.963759",
+        "lon": "-15.578390",
+        "startTime": "sunset",
+        "endTime": "sunriseEnd",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 650,
+        "y": 1980,
+        "wires": [
+            [
+                "42cafe7c.cf4d1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5dc35cb0.979394",
+        "type": "time-range-switch",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Oscuridad",
+        "lat": "27.963759",
+        "lon": "-15.578390",
+        "startTime": "sunset",
+        "endTime": "sunriseEnd",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 650,
+        "y": 2160,
+        "wires": [
+            [
+                "8cc4c483.a1e708"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7d8ffbec.aef464",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID del binary_sensor que detecta si una puerta está abierta o cerrada.",
+        "x": 400,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "10de15f8.c7414a",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar latitud, longitud y espacio de tiempo para que continúe la ejecución del flow o no.",
+        "x": 640,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "a6d3d159.02147",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar latitud, longitud y espacio de tiempo para que continúe la ejecución del flow o no.",
+        "x": 640,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "8c33d15a.c11d6",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la light que queremos encender.",
+        "x": 820,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "352ecd0b.484f72",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Modificar",
+        "info": "Modificar Entity ID de la light que queremos apagar.",
+        "x": 1000,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "45b86c43.f0b764",
+        "type": "comment",
+        "z": "2ed4f6b9.cfa7ca",
+        "name": "Rangos",
+        "info": "dawn > antes del amanecer\nnauticalDawn > antes del amanecer (náutico)\nsunrise > amanecer\nsunriseEnd fin del amanecer\nsolarNoon > mediodía solar\ngoldenHour > las horas de oro\ngoldenHourEnd > fin de las horas de oro\nsunsetStart > comienza la puesta de sol\nsunset > puesta del sol\ndusk > comienza la oscuridad\nnauticalDusk > comienza la oscuridad (náutica)\nnight > noche\nnightEnd > fin de la noche\nnadir > parte de la noche más oscura\n",
+        "x": 390,
+        "y": 1880,
+        "wires": []
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
