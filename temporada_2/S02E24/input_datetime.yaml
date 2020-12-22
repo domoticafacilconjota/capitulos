@@ -1,0 +1,4 @@
+lavadora:
+  name: 'Lavadora funcionando por:'
+  has_date: false
+  has_time: true
