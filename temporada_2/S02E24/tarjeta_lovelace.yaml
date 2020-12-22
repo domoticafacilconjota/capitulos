@@ -1,0 +1,6 @@
+entities:
+  - entity: switch.enchufe_lavadora_00_00_00_cuarto_de_maquinas_azotea
+  - entity: input_datetime.lavadora
+show_header_toggle: false
+title: Máquinas
+type: entities
