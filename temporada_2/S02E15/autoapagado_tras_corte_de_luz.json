@@ -1,0 +1,437 @@
+[
+    {
+        "id": "95026065.5847a",
+        "type": "bigtimer",
+        "z": "619905db.8913ac",
+        "outtopic": "",
+        "outpayload1": "",
+        "outpayload2": "",
+        "name": "Rango horario",
+        "comment": "",
+        "lat": "27.963759",
+        "lon": "-15.578390",
+        "starttime": "660",
+        "endtime": "1305",
+        "starttime2": 0,
+        "endtime2": 0,
+        "startoff": "-5",
+        "endoff": "0",
+        "startoff2": 0,
+        "endoff2": 0,
+        "offs": 0,
+        "outtext1": "",
+        "outtext2": "",
+        "timeout": "1440",
+        "sun": true,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "jan": true,
+        "feb": true,
+        "mar": true,
+        "apr": true,
+        "may": true,
+        "jun": true,
+        "jul": true,
+        "aug": true,
+        "sep": true,
+        "oct": true,
+        "nov": true,
+        "dec": true,
+        "day1": 0,
+        "month1": 0,
+        "day2": 0,
+        "month2": 0,
+        "day3": 0,
+        "month3": 0,
+        "day4": 0,
+        "month4": 0,
+        "day5": 0,
+        "month5": 0,
+        "day6": 0,
+        "month6": 0,
+        "day7": 0,
+        "month7": 0,
+        "day8": 0,
+        "month8": 0,
+        "day9": 0,
+        "month9": 0,
+        "day10": 0,
+        "month10": 0,
+        "day11": 0,
+        "month11": 0,
+        "day12": 0,
+        "month12": 0,
+        "d1": 0,
+        "w1": 0,
+        "d2": 0,
+        "w2": 0,
+        "d3": 0,
+        "w3": 0,
+        "d4": 0,
+        "w4": 0,
+        "d5": 0,
+        "w5": 0,
+        "d6": 0,
+        "w6": 0,
+        "xday1": 0,
+        "xmonth1": 0,
+        "xday2": 0,
+        "xmonth2": 0,
+        "xday3": 0,
+        "xmonth3": 0,
+        "xday4": 0,
+        "xmonth4": 0,
+        "xday5": 0,
+        "xmonth5": 0,
+        "xday6": 0,
+        "xmonth6": 0,
+        "xd1": 0,
+        "xw1": 0,
+        "xd2": 0,
+        "xw2": 0,
+        "xd3": 0,
+        "xw3": 0,
+        "xd4": 0,
+        "xw4": 0,
+        "xd5": 0,
+        "xw5": 0,
+        "xd6": 0,
+        "xw6": 0,
+        "suspend": false,
+        "random": false,
+        "randon1": false,
+        "randoff1": false,
+        "randon2": false,
+        "randoff2": false,
+        "repeat": false,
+        "atstart": true,
+        "odd": false,
+        "even": false,
+        "x": 3500,
+        "y": 720,
+        "wires": [
+            [],
+            [
+                "3daf2445.11362c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f5ef270e.80f958",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar en rango",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 3260,
+        "y": 660,
+        "wires": [
+            [
+                "95026065.5847a"
+            ]
+        ]
+    },
+    {
+        "id": "c91f22cc.d6d1a",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Forzar fuera de rango",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 3240,
+        "y": 720,
+        "wires": [
+            [
+                "95026065.5847a"
+            ]
+        ]
+    },
+    {
+        "id": "d2aad1dc.e2e9d",
+        "type": "inject",
+        "z": "619905db.8913ac",
+        "name": "Automático",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "auto",
+        "payloadType": "str",
+        "x": 3280,
+        "y": 780,
+        "wires": [
+            [
+                "95026065.5847a"
+            ]
+        ]
+    },
+    {
+        "id": "c1394523.2b2248",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Encender relé",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.pruebas",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 3880,
+        "y": 880,
+        "wires": [
+            [
+                "373a32a9.baa2ee"
+            ]
+        ]
+    },
+    {
+        "id": "373a32a9.baa2ee",
+        "type": "looptimer",
+        "z": "619905db.8913ac",
+        "duration": "5",
+        "units": "Second",
+        "maxloops": "100",
+        "maxtimeout": "1",
+        "maxtimeoutunits": "Hour",
+        "name": "Reintentar cada 5 segundos",
+        "x": 4040,
+        "y": 720,
+        "wires": [
+            [
+                "2f87b964.dd2af6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2f87b964.dd2af6",
+        "type": "api-current-state",
+        "z": "619905db.8913ac",
+        "name": "¿Luz continúa encendida?",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "light.luz_cortesia_00_01_00_cocina_principal_casa_pequena",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 4340,
+        "y": 720,
+        "wires": [
+            [
+                "49652da7.8a2ca4"
+            ],
+            [
+                "ebcd1719.0f70f8"
+            ]
+        ]
+    },
+    {
+        "id": "937ef774.f1e1d8",
+        "type": "api-current-state",
+        "z": "619905db.8913ac",
+        "name": "Comprobar relé",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "switch.pruebas",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 3760,
+        "y": 720,
+        "wires": [
+            [
+                "c1394523.2b2248"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ebcd1719.0f70f8",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "¡STOP!",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "stop",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4200,
+        "y": 880,
+        "wires": [
+            [
+                "373a32a9.baa2ee"
+            ]
+        ]
+    },
+    {
+        "id": "49652da7.8a2ca4",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Apagar luz",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.luz_cortesia_00_01_00_cocina_principal_casa_pequena",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 4190,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3daf2445.11362c",
+        "type": "switch",
+        "z": "619905db.8913ac",
+        "name": "⬆OFF/ ⬇ON  ",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 3630,
+        "y": 880,
+        "wires": [
+            [],
+            [
+                "937ef774.f1e1d8"
+            ]
+        ]
+    },
+    {
+        "id": "8c9bf859.362e08",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modifica el Entity Id para adecuarlo a tu dispositivo. También debes cambiar el \"Server\".",
+        "x": 3740,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "e6412ed7.8e3d8",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modifica el Entity Id para adecuarlo a tu dispositivo. También debes cambiar el \"Server\".",
+        "x": 4180,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "2d7baa90.1516f6",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modifica el Entity Id para adecuarlo a tu dispositivo. También debes cambiar el \"Server\".",
+        "x": 4280,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "434e5111.a6136",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modifica el Entity Id para adecuarlo a tu dispositivo. También debes cambiar el \"Server\".",
+        "x": 3860,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "4343da5b.a8e9b4",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modifica el rango horario si así lo crees oportuno.",
+        "x": 3480,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant"
+    }
+]
