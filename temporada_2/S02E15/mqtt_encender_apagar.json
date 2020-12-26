@@ -1,0 +1,88 @@
+[
+    {
+        "id": "8d7e401d.44808",
+        "type": "mqtt in",
+        "z": "619905db.8913ac",
+        "name": "",
+        "topic": "stat/oficina_pruebas/SWITCH1T",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "a2dcaf56.e8ddc",
+        "x": 3860,
+        "y": 340,
+        "wires": [
+            [
+                "ce9636ed.fdb5a8"
+            ]
+        ]
+    },
+    {
+        "id": "ce9636ed.fdb5a8",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Bombilla inteligente",
+        "server": "863a80ba.c8027",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "toggle",
+        "entityId": "light.luz_cortesia_00_01_00_cocina_principal_casa_pequena",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 4230,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "81c75dc.94827a",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modifica el TOPIC para adecuarlo a tu dispositivo. También debes cambiar el Server.",
+        "x": 3790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "220e1941.509c46",
+        "type": "comment",
+        "z": "619905db.8913ac",
+        "name": "Modificar",
+        "info": "Modifica el Entity Id para adecuarlo a tu dispositivo. También debes cambiar el \"Server\".",
+        "x": 4200,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a2dcaf56.e8ddc",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.10",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant"
+    }
+]
