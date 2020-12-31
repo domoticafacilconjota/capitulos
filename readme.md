@@ -45,6 +45,7 @@ Lista de la compra recomendada por Jota:
 ##### Opción *recomendada*:
 - Kit Raspberry 4B 4GB ⏩️ https://amzn.to/30Cy2kt
 - Almacenamiento:
+	- SSD WESN: ⏩️ WD My Passport SSD 256VG GB https://amzn.to/2WYIRKZ
 	- Opción 1: ⏩️ Samsung EVO 64GB https://amzn.to/3fEehNH
 	- Opción 2: ⏩️ Samsung PRO Endurance 32GB https://amzn.to/3knM9lq
 	- Opción 3: ⏩️ Sandisk Extreme A2 32 GB https://amzn.to/2PwQl4f
