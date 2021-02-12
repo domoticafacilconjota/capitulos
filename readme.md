@@ -78,6 +78,7 @@ Lista de la compra recomendada por Jota:
 - Sensor Zigbee Puertas Xiaomi AS006CNW01 ⏩️ https://s.click.aliexpress.com/e/_dVPM1uv
 - Sensor Zigbee de movimiento Xiaomi RTCGQ11LM ⏩️ https://s.click.aliexpress.com/e/_dW4hQaE
 - Sensor Zigbee de inundación Xiaomi SJCGQ11LM ⏩️ https://s.click.aliexpress.com/e/_dUnxJ1y
+- Sensor Zigbee de luminosidad Xiaomi GZCGQ01LM ⏩️ https://s.click.aliexpress.com/e/_AFwTZA
 - Sensor Zigbee de vibración Xiaomi DJT11LM ⏩️ https://s.click.aliexpress.com/e/_dUPNQxc
 - Sensor WiFi de Calidad del Aire Xiaomi ⏩️ https://s.click.aliexpress.com/e/_d6mbnUm
 
