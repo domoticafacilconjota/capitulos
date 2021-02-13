@@ -1,0 +1,243 @@
+[
+    {
+        "id": "6c3fee85.0637f",
+        "type": "server-state-changed",
+        "z": "eb096115.7620c",
+        "name": "Input boolean",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_boolean.luz_albert_tecnoyfoto",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 610,
+        "y": 600,
+        "wires": [
+            [
+                "205533eb.fb54bc"
+            ],
+            [
+                "f7697899.ab9218"
+            ]
+        ]
+    },
+    {
+        "id": "205533eb.fb54bc",
+        "type": "change",
+        "z": "eb096115.7620c",
+        "name": "H & P",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"Authorization\":\"Bearer TOKEN_DE_LARGA_DURACIÓN\",\"Content-Type\":\"application/json\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"entity_id\":\"DOMINIO.ENTIDAD\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 580,
+        "wires": [
+            [
+                "3f1961af.27266e"
+            ]
+        ]
+    },
+    {
+        "id": "f7697899.ab9218",
+        "type": "change",
+        "z": "eb096115.7620c",
+        "name": "H & P",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"Authorization\":\"Bearer TOKEN_DE_LARGA_DURACIÓN\",\"Content-Type\":\"application/json\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"entity_id\":\"DOMINIO.ENTIDAD\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 620,
+        "wires": [
+            [
+                "941e324a.19ea1"
+            ]
+        ]
+    },
+    {
+        "id": "3f1961af.27266e",
+        "type": "http request",
+        "z": "eb096115.7620c",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://HOME.ASSISTANT/api/services/DOMINIO/SERVICIO",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 930,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "941e324a.19ea1",
+        "type": "http request",
+        "z": "eb096115.7620c",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://HOME.ASSISTANT/api/services/DOMINIO/SERVICIO",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 930,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99f74028.87e73",
+        "type": "inject",
+        "z": "eb096115.7620c",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ON",
+        "x": 570,
+        "y": 440,
+        "wires": [
+            [
+                "205533eb.fb54bc"
+            ]
+        ]
+    },
+    {
+        "id": "26d88c2f.a38e84",
+        "type": "inject",
+        "z": "eb096115.7620c",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "OFF",
+        "x": 570,
+        "y": 760,
+        "wires": [
+            [
+                "f7697899.ab9218"
+            ]
+        ]
+    },
+    {
+        "id": "224275f3.baa45a",
+        "type": "comment",
+        "z": "eb096115.7620c",
+        "name": "Cambiar",
+        "info": "En \"Entity ID\" debéis poner el ID (dominio.nombre) del input boolean que queráis que controle, por ejemplo, el encendido y apagado. Por ejemplo: input_boolean.luz_casa_papis\n",
+        "x": 600,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "ce520d1b.dc8b4",
+        "type": "comment",
+        "z": "eb096115.7620c",
+        "name": "Cambiar",
+        "info": "TOKEN_DE_LARGA_DURACIÓN > Por vuestro token de larga duración.\n\nDOMINIO.ENTIDAD > Por vuestro ID de la entidad. Por ejemplo: switch.dormitorio\n\n",
+        "x": 760,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "d8814de6.ae98c",
+        "type": "comment",
+        "z": "eb096115.7620c",
+        "name": "Cambiar",
+        "info": "HOME.ASSISTANT > Por la URL de vuestro Home Assistant. Si utilizáis un puerto no estándar, debéis incluirlo. Por ejemplo: micasa.duckdns.org:8123\n\nDOMINIO > El dominio de la entidad. Por ejemplo light, switch, cover, etc.\n\n\nSERVICIO > El servicio al que queréis llamar. Por ejemplo: turn_off o turn_on\n",
+        "x": 940,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
