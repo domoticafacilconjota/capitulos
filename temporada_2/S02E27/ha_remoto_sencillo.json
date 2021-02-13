@@ -1,0 +1,120 @@
+[
+    {
+        "id": "7066685b.3b98c8",
+        "type": "inject",
+        "z": "eb096115.7620c",
+        "name": "Dejar de molestar a Albert",
+        "props": [
+            {
+                "p": "headers",
+                "v": "{\"Authorization\":\"Bearer TOKEN_DE_LARGA_DURACIÓN\",\"Content-Type\":\"application/json\"}",
+                "vt": "json"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"entity_id\":\"DOMINIO.ENTIDAD\"}",
+        "payloadType": "json",
+        "x": 690,
+        "y": 260,
+        "wires": [
+            [
+                "f7076f62.4eab7"
+            ]
+        ]
+    },
+    {
+        "id": "f7076f62.4eab7",
+        "type": "http request",
+        "z": "eb096115.7620c",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://HOME.ASSISTANT/api/services/DOMINIO/SERVICIO",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 920,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eaae2fe6.402f3",
+        "type": "inject",
+        "z": "eb096115.7620c",
+        "name": "Molestar a Albert",
+        "props": [
+            {
+                "p": "headers",
+                "v": "{\"Authorization\":\"Bearer TOKEN_DE_LARGA_DURACIÓN\",\"Content-Type\":\"application/json\"}",
+                "vt": "json"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"entity_id\":\"DOMINIO.ENTIDAD\"}",
+        "payloadType": "json",
+        "x": 720,
+        "y": 140,
+        "wires": [
+            [
+                "d51b03a2.3cfe4"
+            ]
+        ]
+    },
+    {
+        "id": "d51b03a2.3cfe4",
+        "type": "http request",
+        "z": "eb096115.7620c",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://HOME.ASSISTANT/api/services/DOMINIO/SERVICIO",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 920,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7ca18bbf.afe474",
+        "type": "comment",
+        "z": "eb096115.7620c",
+        "name": "Cambiar",
+        "info": "TOKEN_DE_LARGA_DURACIÓN > Por vuestro token de larga duración.\n\nDOMINIO.ENTIDAD > Por vuestro ID de la entidad. Por ejemplo: switch.dormitorio\n\n",
+        "x": 740,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "eefd9834.45f708",
+        "type": "comment",
+        "z": "eb096115.7620c",
+        "name": "Cambiar",
+        "info": "HOME.ASSISTANT > Por la URL de vuestro Home Assistant. Si utilizáis un puerto no estándar, debéis incluirlo. Por ejemplo: micasa.duckdns.org:8123\n\nDOMINIO > El dominio de la entidad. Por ejemplo light, switch, cover, etc.\n\n\nSERVICIO > El servicio al que queréis llamar. Por ejemplo: turn_off o turn_on\n",
+        "x": 920,
+        "y": 200,
+        "wires": []
+    }
+]
