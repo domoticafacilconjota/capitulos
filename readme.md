@@ -62,7 +62,7 @@ Lista de la compra recomendada por Jota:
 - SSD Samsung 860 EVO ⏩ https://amzn.to/3iivpue
 
 ### Flasheando
-- ESP8266 / ESP8285 / ESP32 ⏩️ https://s.click.aliexpress.com/e/_dVwKwgV
+- ESP8266 / ESP8285 / ESP32 ⏩️ https://s.click.aliexpress.com/e/_9fHsqm
 - CC2530 / CC2531 / CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_d7nnvoS
 
 ### Herramientas
