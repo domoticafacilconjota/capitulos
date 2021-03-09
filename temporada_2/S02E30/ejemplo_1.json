@@ -42,7 +42,7 @@
         "type": "comment",
         "z": "1a97a37a.2f0acd",
         "name": "Cambiar",
-        "info": "Configurar BOT y cambiar CHatID",
+        "info": "Configurar BOT y cambiar ChatID",
         "x": 340,
         "y": 140,
         "wires": []
