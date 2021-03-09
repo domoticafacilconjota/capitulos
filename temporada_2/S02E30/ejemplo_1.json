@@ -1,0 +1,58 @@
+[
+    {
+        "id": "f6ce31bc.a177d",
+        "type": "telegrambot-notify",
+        "z": "1a97a37a.2f0acd",
+        "name": "",
+        "bot": "6f7e22fa.50499c",
+        "chatId": "-123456789",
+        "message": "Jota es super guapo y lo sabes 😎",
+        "parseMode": "",
+        "x": 360,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b7c1c33a.014b3",
+        "type": "inject",
+        "z": "1a97a37a.2f0acd",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 200,
+        "y": 200,
+        "wires": [
+            [
+                "f6ce31bc.a177d"
+            ]
+        ]
+    },
+    {
+        "id": "4c65949c.9e4dcc",
+        "type": "comment",
+        "z": "1a97a37a.2f0acd",
+        "name": "Cambiar",
+        "info": "Configurar BOT y cambiar CHatID",
+        "x": 340,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "6f7e22fa.50499c",
+        "type": "telegrambot-config",
+        "botname": "DF",
+        "usernames": "",
+        "chatIds": "",
+        "pollInterval": "300"
+    }
+]
