@@ -1,0 +1,103 @@
+[
+    {
+        "id": "1ad9528d.b5650d",
+        "type": "telegram sender",
+        "z": "1a97a37a.2f0acd",
+        "name": "Notificar posición",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35da00c2.07844",
+        "type": "function",
+        "z": "1a97a37a.2f0acd",
+        "name": "Función de pruebas",
+        "func": "// Creamos el mensaje con MARKDOWN\nvar message = '*Esto es una prueba:*\\r\\n' +\n'¿Funcionará? Seguro que sí...';\n\n// Configuramos el payload\nmsg.payload = {chatId : -123456789 , type : 'message', content : message};\n\n// Configuramos las opciones\nmsg.payload.options = {disable_web_page_preview : true, parse_mode : \"Markdown\"};\n\n// Enviamos el mensaje\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 380,
+        "y": 460,
+        "wires": [
+            [
+                "1ad9528d.b5650d"
+            ]
+        ]
+    },
+    {
+        "id": "38e0152c.3f4f1a",
+        "type": "inject",
+        "z": "1a97a37a.2f0acd",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 200,
+        "y": 460,
+        "wires": [
+            [
+                "35da00c2.07844"
+            ]
+        ]
+    },
+    {
+        "id": "7782c591.7778fc",
+        "type": "comment",
+        "z": "1a97a37a.2f0acd",
+        "name": "Cambiar",
+        "info": "Cambiar chatId",
+        "x": 340,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "50d0eb1a.99c034",
+        "type": "comment",
+        "z": "1a97a37a.2f0acd",
+        "name": "Cambiar",
+        "info": "Añadir configuración del BOT",
+        "x": 560,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a1846b04.f43ca8",
+        "type": "telegram bot",
+        "botname": "DF",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    }
+]
