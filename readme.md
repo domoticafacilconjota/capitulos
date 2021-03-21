@@ -63,6 +63,7 @@ Lista de la compra recomendada por Jota:
 
 ### Flasheando
 - ESP8266 / ESP8285 / ESP32 ⏩️ https://s.click.aliexpress.com/e/_9fHsqm
+	- PINS para algunos Shelly ⏩️ https://s.click.aliexpress.com/e/_A40xem
 - CC2530 / CC2531 / CC2530 + CC2591 ⏩️ https://s.click.aliexpress.com/e/_d7nnvoS
 
 ### Herramientas
