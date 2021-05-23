@@ -1,0 +1,328 @@
+[
+    {
+        "id": "45d78603.c9d908",
+        "type": "telegram command",
+        "z": "1a97a37a.2f0acd",
+        "name": "/prueba",
+        "command": "/prueba",
+        "bot": "a1846b04.f43ca8",
+        "strict": false,
+        "hasresponse": false,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 4180,
+        "wires": [
+            [
+                "c842a9f5.90d9e8"
+            ]
+        ]
+    },
+    {
+        "id": "c842a9f5.90d9e8",
+        "type": "function",
+        "z": "1a97a37a.2f0acd",
+        "name": "mensaje inicial del teclado",
+        "func": "// Guardamos el identificador del mensaje actual\nglobal.set(\"kb\", { messageId : msg.payload.messageId });\n\n// Configuramos todas las opciones a mostrar según requiere Telegram\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    \"inline_keyboard\": [[\n                {\n                    \"text\": \"Dispositivo 1\",\n                    \"callback_data\": \"Dispositivo 1\"            \n                }, \n                {\n                    \"text\": \"Dispositivo 2\",\n                    \"callback_data\": \"Dispositivo 2\"            \n                },\n                {\n                    \"text\": \"Dispositivo 3\",\n                    \"callback_data\": \"Dispositivo 3\"            \n                }\n                ]\n            ]\n  })\n};\n\n// Configuramos el mensaje que saldrá junto con las opciones\nmsg.payload.content = \"Esperando su orden, Excmo. Sr. Jota\";\nmsg.payload.options = opts;\n\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 4180,
+        "wires": [
+            [
+                "4876a98c.7f0a58"
+            ]
+        ]
+    },
+    {
+        "id": "4876a98c.7f0a58",
+        "type": "telegram sender",
+        "z": "1a97a37a.2f0acd",
+        "name": "mostrar teclado inline",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 660,
+        "y": 4180,
+        "wires": [
+            [
+                "90240620.906898"
+            ]
+        ]
+    },
+    {
+        "id": "90240620.906898",
+        "type": "function",
+        "z": "1a97a37a.2f0acd",
+        "name": "guardar variables globales",
+        "func": "// Guardamos el identificador del mensaje actual\nglobal.set(\"kb\", { messageId : msg.payload.sentMessageId });\n\n// Ponemos el incremental para el Callback Query a 1 \nglobal.set(\"cN\", 1);\n\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 4180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dab2f537.684c78",
+        "type": "telegram event",
+        "z": "1a97a37a.2f0acd",
+        "name": "Callback Query",
+        "bot": "a1846b04.f43ca8",
+        "event": "callback_query",
+        "autoanswer": true,
+        "x": 240,
+        "y": 4380,
+        "wires": [
+            [
+                "758261a.b39d6a",
+                "71dd594c.90f678"
+            ]
+        ],
+        "info": "ALL CALL BACK QUERIES ARE READ BY\nALL CALL BACK QUERRY NODES. This means\nwhether you only need one callback_query\nfor all of NodeRED. You just have to sort them."
+    },
+    {
+        "id": "758261a.b39d6a",
+        "type": "function",
+        "z": "1a97a37a.2f0acd",
+        "name": "editar mensaje del teclado",
+        "func": "// ¿No es la primera llamada? Pasamos..\nif(global.get(\"cN\") != 1){\n    return;\n}\n\n// Obtenemos el identificador del mensaje inicial\nvar messageId = global.get(\"kb\").messageId;\n\n// Modificamos el teclado inline actual con otras opciones\nvar reply_markup = JSON.stringify({\n    \"inline_keyboard\": [[\n                {\n                    \"text\": \"Encender\",\n                    \"callback_data\": \"Encender\"            \n                }, \n                {\n                    \"text\": \"Apagar\",\n                    \"callback_data\": \"Apagar\"            \n                }\n                ]\n            ]\n  });\n\n// Configuramos las opciones para la respuesta\nvar options = {\n    chat_id : msg.payload.chatId,\n    reply_markup : reply_markup,\n    message_id : messageId\n};\n\nmsg.payload.type = \"editMessageReplyMarkup\";\nmsg.payload.content = reply_markup;\nmsg.payload.options = options;\n\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 4300,
+        "wires": [
+            [
+                "a75c8af5.c511c8"
+            ]
+        ]
+    },
+    {
+        "id": "a75c8af5.c511c8",
+        "type": "telegram sender",
+        "z": "1a97a37a.2f0acd",
+        "name": "respuesta a Callback Query",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 860,
+        "y": 4300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "71dd594c.90f678",
+        "type": "function",
+        "z": "1a97a37a.2f0acd",
+        "name": "hacemos con el Callback Query esto:",
+        "func": "// ¿No es la primera llamada? Pasamos..\nif(global.get(\"cN\") != 1){\n    return;\n}\n\nif (msg.payload.content === \"Encender\") {\n    msg.payload.type = \"deleteMessage\";\n    msg.payload.content = global.get(\"kb\").messageId\n    global.set(\"kb\", {messageId: null});\n    global.set(\"cN\", null);\n    msg.topic = \"on\";\n    return [ null, msg, null, null, null, null ];\n} else if (msg.payload.content === \"Apagar\") {\n    msg.payload.type = \"deleteMessage\";\n    msg.payload.content = global.get(\"kb\").messageId\n    global.set(\"kb\", {messageId: null});\n    global.set(\"cN\", null);\n    msg.topic = \"off\";\n    return [ null, null, msg, null, null, null ];\n} else if (msg.payload.content === \"Dispositivo 1\") {\n    msg.topic = \"d1\";\n    return [ null, null, null, msg, null, null ];\n} else if (msg.payload.content === \"Dispositivo 2\") {\n    msg.topic = \"d2\";\n    return [ null, null, null, null, msg, null ];\n} else if (msg.payload.content === \"Dispositivo 3\") {\n    msg.topic = \"d3\";\n    return [ null, null, null, null, null, msg ];\n} else {\n    var show_alert = false;\n    \n    // Tener muy presente\n    msg.payload.options = show_alert;\n    \n    return [ msg, null, null, null, null, null ];\n}",
+        "outputs": 6,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 4460,
+        "wires": [
+            [
+                "a75c8af5.c511c8",
+                "b91adc1f.5de98"
+            ],
+            [
+                "a75c8af5.c511c8",
+                "b91adc1f.5de98"
+            ],
+            [
+                "a75c8af5.c511c8",
+                "b91adc1f.5de98"
+            ],
+            [
+                "b91adc1f.5de98"
+            ],
+            [
+                "b91adc1f.5de98"
+            ],
+            [
+                "b91adc1f.5de98"
+            ]
+        ]
+    },
+    {
+        "id": "94113bdd.bb4e78",
+        "type": "join",
+        "z": "1a97a37a.2f0acd",
+        "name": "esperar y juntar",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "20",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 860,
+        "y": 4460,
+        "wires": [
+            [
+                "ed17e0e4.edb18"
+            ]
+        ]
+    },
+    {
+        "id": "ed17e0e4.edb18",
+        "type": "function",
+        "z": "1a97a37a.2f0acd",
+        "name": "finalmente",
+        "func": "if (msg.payload[0] === \"d1\" && msg.payload[1] === \"on\") {\n    msg.payload.domain = \"light\";\n    msg.payload.service = \"turn_on\";\n    msg.payload.data = {entity_id: \"light.yeelight_1\"};\n    return [msg, null];\n} else if (msg.payload[0] === \"d1\" && msg.payload[1] === \"off\") {\n    msg.payload.domain = \"light\";\n    msg.payload.service = \"turn_off\";\n    msg.payload.data = {entity_id: \"light.yeelight_1\"};\n    return [msg, null];\n} else if(msg.payload[0] === \"d2\" && msg.payload[1] === \"on\") {\n    msg.payload.domain = \"light\";\n    msg.payload.service = \"turn_on\";\n    msg.payload.data = {entity_id: \"light.yeelight_2\"};\n    return [msg, null];\n} else if (msg.payload[0] === \"d2\" && msg.payload[1] === \"off\") {\n    msg.payload.domain = \"light\";\n    msg.payload.service = \"turn_off\";\n    msg.payload.data = {entity_id: \"light.yeelight_2\"};\n    return [msg, null];\n} else if (msg.payload[0] === \"d3\" && msg.payload[1] === \"on\") {\n    msg.payload.domain = \"light\";\n    msg.payload.service = \"turn_on\";\n    msg.payload.data = {entity_id: \"light.yeelights\"};\n    return [msg, null];\n} else if (msg.payload[0] === \"d3\" && msg.payload[1] === \"off\") {\n    msg.payload.domain = \"light\";\n    msg.payload.service = \"turn_off\";\n    msg.payload.data = {entity_id: \"light.yeelights\"};\n    return [msg, null];\n}\n\nreturn;\n\n//{\n//  \"domain\": \"light\",\n//  \"service\": \"turn_on\",\n//  \"data\": {\n//    \"entity_id\": \"light.kitchen\"\n//  }\n//}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 4460,
+        "wires": [
+            [
+                "3768309d.a646"
+            ]
+        ]
+    },
+    {
+        "id": "3768309d.a646",
+        "type": "api-call-service",
+        "z": "1a97a37a.2f0acd",
+        "name": "Encender / Apagar Dispositivos",
+        "server": "2e0f828a.d95dbe",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "",
+        "service": "",
+        "entityId": "",
+        "data": "",
+        "dataType": "jsonata",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1290,
+        "y": 4460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "93512fd7.b65a8",
+        "type": "catch",
+        "z": "1a97a37a.2f0acd",
+        "name": "",
+        "scope": [
+            "a75c8af5.c511c8"
+        ],
+        "uncaught": false,
+        "x": 210,
+        "y": 4100,
+        "wires": [
+            [
+                "2cb18b6.fb4c174"
+            ]
+        ]
+    },
+    {
+        "id": "2cb18b6.fb4c174",
+        "type": "debug",
+        "z": "1a97a37a.2f0acd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 4100,
+        "wires": []
+    },
+    {
+        "id": "b91adc1f.5de98",
+        "type": "change",
+        "z": "1a97a37a.2f0acd",
+        "name": "del topic al payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 4540,
+        "wires": [
+            [
+                "94113bdd.bb4e78"
+            ]
+        ]
+    },
+    {
+        "id": "a1846b04.f43ca8",
+        "type": "telegram bot",
+        "botname": "DF",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
