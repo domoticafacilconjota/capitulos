@@ -70,9 +70,19 @@ Lista de la compra recomendada por Jota:
 - Soldador TS100-B2 ⏩️ https://s.click.aliexpress.com/e/_dYykjYu
 	- Fuente de alimentación para TS100-B2 ⏩️ https://s.click.aliexpress.com/e/_d8bqpqL
 	** Vale cualquier fuente de alimentación de 12 a 24 VCC con el vivo positivo.
+	- Soporte soldador ⏩️ https://s.click.aliexpress.com/e/_A41VkS
+- Soporte para soldar ⏩️ https://amzn.to/3hZLlCR
+- Calibre digital ⏩️ https://amzn.to/3wBsW4C
+- Destornillador eléctrico WOWstick ⏩️ https://amzn.to/2T1A5gS
+- Destornillador eléctrico WOWstick ⏩️ https://s.click.aliexpress.com/e/_AcAFzG
+- Chupa-estaño / desoldador ⏩️ https://s.click.aliexpress.com/e/_ALl9Ua
+- Multímetro fácil ⏩️ https://amzn.to/3hvLeA0
+- 
 
 ### Pulsadores
 - Pulsador Zigbee Xiaomi WXKG11LM ⏩️ http://s.click.aliexpress.com/e/_dYc8vrM
+- Cubo Mágico ⏩️ https://amzn.to/3r4puOX
+- Cubo Mágico ⏩️ https://s.click.aliexpress.com/e/_9Q5B8K
 
 ### Sensores
 - Sensor Zigbee Temperatura / Humedad Xiaomi WSDCGQ11LM ⏩️ https://s.click.aliexpress.com/e/_Ao2cgR
