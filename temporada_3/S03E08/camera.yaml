@@ -1,0 +1,3 @@
+- platform: ffmpeg
+  name: CAMARA1
+  input: -rtsp_transport tcp -i rtsp://USUARIO:CONTRASEÑA@IP.DE.LA.CÁMARA:554/h264Preview_01_main
