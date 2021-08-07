@@ -2,7 +2,16 @@
 =======================================
 ![Domótica Fácil con Jota en YouTube](https://github.com/domoticafacilconjota/capitulos/blob/master/src/img/header_s1.png)
 
-# >>>> BOTE ACTUAL 371.89€ Detalle: https://git.io/JLQHi #
+# >>>> BOTE ACTUAL 14.74€ Detalle: https://git.io/JLQHi #
+
+# Enlaces de interés #
+
+WEB Oficial de Domótica Fácil con Jota ⏩️ https://domotizatu.casa/
+
+Twitter de Domótica Fácil con Jota ⏩️ https://twitter.com/DomoJota
+
+Podcast de Domótica Fácil con Jota ⏩️ https://open.spotify.com/show/5QUd4K6CkDdfjL9wMOkCbb
+
 
 En este repositorio se mostrará de forma ordenada el contenido de los vídeos del canal Domótica Fácil con Jota en YouTube así como código, enlaces de descarga y en general cualquier tipo de información necesaria para seguir los tutoriales.
 
