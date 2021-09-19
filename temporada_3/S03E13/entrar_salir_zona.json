@@ -1,0 +1,290 @@
+[
+    {
+        "id": "18e1ccab98d1a669",
+        "type": "trigger-state",
+        "z": "8115699e.dee428",
+        "name": "Entrar al trabajo",
+        "server": "2e0f828a.d95dbe",
+        "version": 0,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityid": "person.acontrolar",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "current_state",
+                "comparatorType": "is",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "zona",
+                "propertyValue": "new_state.state"
+            },
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "previous_state",
+                "comparatorType": "is_not",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "zona",
+                "propertyValue": "old_state.state"
+            }
+        ],
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": true,
+        "state_type": "str",
+        "x": 920,
+        "y": 2640,
+        "wires": [
+            [
+                "36e3a536e516d2d3"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f16466181ed90a70",
+        "type": "function",
+        "z": "8115699e.dee428",
+        "name": "notificar",
+        "func": "// Creamos el mensaje con MARKDOWN\nlet message = '*Llegando a la zona X*';\nlet myChatId = 1234567890;\n\n// Configuramos el payload\nmsg.payload = {chatId : myChatId , type : 'message', content : message};\n\n// Configuramos las opciones\nmsg.payload.options = {disable_web_page_preview : true, parse_mode : \"Markdown\"};\n\n// Enviamos el mensaje\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 2640,
+        "wires": [
+            [
+                "fb4093e96a086045"
+            ]
+        ]
+    },
+    {
+        "id": "fb4093e96a086045",
+        "type": "telegram sender",
+        "z": "8115699e.dee428",
+        "name": "",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1490,
+        "y": 2640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36e3a536e516d2d3",
+        "type": "throttle",
+        "z": "8115699e.dee428",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "1",
+        "timeLimitType": "hours",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 1110,
+        "y": 2640,
+        "wires": [
+            [
+                "f16466181ed90a70"
+            ]
+        ]
+    },
+    {
+        "id": "505df92872fbd369",
+        "type": "trigger-state",
+        "z": "8115699e.dee428",
+        "name": "Salir del trabajo",
+        "server": "2e0f828a.d95dbe",
+        "version": 0,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityid": "person.acontrolar",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "current_state",
+                "comparatorType": "is_not",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "zona",
+                "propertyValue": "new_state.state"
+            },
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "previous_state",
+                "comparatorType": "is",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "zona",
+                "propertyValue": "old_state.state"
+            }
+        ],
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": true,
+        "state_type": "str",
+        "x": 920,
+        "y": 2780,
+        "wires": [
+            [
+                "73aac7b47f41456b"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "47116443b7e038b6",
+        "type": "function",
+        "z": "8115699e.dee428",
+        "name": "notificar",
+        "func": "// Creamos el mensaje con MARKDOWN\nlet message = '*Saliendo de la zona X*';\nlet myChatId = 1234567890;\n\n// Configuramos el payload\nmsg.payload = {chatId : myChatId , type : 'message', content : message};\n\n// Configuramos las opciones\nmsg.payload.options = {disable_web_page_preview : true, parse_mode : \"Markdown\"};\n\n// Enviamos el mensaje\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 2780,
+        "wires": [
+            [
+                "b9d13729f944ee4f"
+            ]
+        ]
+    },
+    {
+        "id": "b9d13729f944ee4f",
+        "type": "telegram sender",
+        "z": "8115699e.dee428",
+        "name": "",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1490,
+        "y": 2780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "73aac7b47f41456b",
+        "type": "throttle",
+        "z": "8115699e.dee428",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "1",
+        "timeLimitType": "hours",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 1110,
+        "y": 2780,
+        "wires": [
+            [
+                "47116443b7e038b6"
+            ]
+        ]
+    },
+    {
+        "id": "9d69aa51296a544b",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí tenéis que cambiar el texto \"zona\" por el nombre de la zona real.",
+        "x": 900,
+        "y": 2580,
+        "wires": []
+    },
+    {
+        "id": "0e028f885baed582",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí podéis cambiar el tiempo mínimo entre mensajes o no. Como queráis.",
+        "x": 1120,
+        "y": 2580,
+        "wires": []
+    },
+    {
+        "id": "8e042b366c7bc006",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí debéis cambiar \"myChatId\" por el Chat ID al que queréis que lleguen los mensajes.",
+        "x": 1280,
+        "y": 2580,
+        "wires": []
+    },
+    {
+        "id": "eb2630138df9d3d6",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí debéis cambiar el bot, por el vuestro.",
+        "x": 1460,
+        "y": 2580,
+        "wires": []
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 1,
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    },
+    {
+        "id": "a1846b04.f43ca8",
+        "type": "telegram bot",
+        "botname": "DF",
+        "usernames": "",
+        "chatids": "1385874833,-1001393252029,-496751166",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    }
+]
