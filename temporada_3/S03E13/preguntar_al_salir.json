@@ -1,0 +1,513 @@
+[
+    {
+        "id": "f7c18f49.063c4",
+        "type": "telegram sender",
+        "z": "8115699e.dee428",
+        "name": "",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 1460,
+        "wires": [
+            [
+                "30d3fd3bbac1f5b5"
+            ]
+        ]
+    },
+    {
+        "id": "f97878f7.de1bf8",
+        "type": "function",
+        "z": "8115699e.dee428",
+        "name": "crear teclado",
+        "func": "msg.payload = [];\n\nvar opts = {\n  reply_markup: JSON.stringify({\n    \"inline_keyboard\": [[\n                {\n                    \"text\": \"Sí\",\n                    \"callback_data\": \"yes\"            \n                }, \n                {\n                    \"text\": \"No\",\n                    \"callback_data\": \"no\"            \n                }]\n            ]\n  })\n};\n\nmsg.payload.content = \"¿Activamos el modo fuera de casa por más de una hora?\";\nmsg.payload.options = opts;\nmsg.payload.chatId = 1234567890;\nmsg.payload.messageId = Date.now();\nmsg.payload.sentMessageId =  Date.now();\nmsg.payload.type = \"message\";\n\nreturn [ msg ];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 1460,
+        "wires": [
+            [
+                "f7c18f49.063c4"
+            ]
+        ]
+    },
+    {
+        "id": "981d4537.1ced18",
+        "type": "telegram event",
+        "z": "8115699e.dee428",
+        "name": "cQ",
+        "bot": "a1846b04.f43ca8",
+        "event": "callback_query",
+        "autoanswer": false,
+        "x": 730,
+        "y": 1700,
+        "wires": [
+            [
+                "40821c80b35f33a2"
+            ]
+        ]
+    },
+    {
+        "id": "30d3fd3bbac1f5b5",
+        "type": "function",
+        "z": "8115699e.dee428",
+        "name": "guardar variables globales",
+        "func": "// Ponemos el incremental para el Callback Query a 1 \nglobal.set(\"cN\", \"not_home_1_hour\");\n\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1380,
+        "y": 1460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "40821c80b35f33a2",
+        "type": "function",
+        "z": "8115699e.dee428",
+        "name": "hacemos con el Callback Query esto:",
+        "func": "// ¿No es la primera llamada? Pasamos..\nif(global.get(\"cN\") != \"not_home_1_hour\"){\n    return;\n}\n\nif (msg.payload.content === \"yes\") {\n    msg.payload.type = \"deleteMessage\";\n    msg.payload.content = msg.payload.messageId\n    global.set(\"cN\", null);\n    msg.topic = \"yes\";\n    return [ msg, null ];\n} else if (msg.payload.content === \"no\") {\n    msg.payload.type = \"deleteMessage\";\n    msg.payload.content = msg.payload.messageId\n    global.set(\"cN\", null);\n    msg.topic = \"no\";\n    return [ null, msg ];\n} else {\n    var show_alert = false;\n    \n    // Tener muy presente\n    msg.payload.options = show_alert;\n    \n    return [ msg, null ];\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 1700,
+        "wires": [
+            [
+                "e60ae0e03830bde9",
+                "080724bb3274e25e"
+            ],
+            [
+                "e60ae0e03830bde9",
+                "dda47754d4253b25"
+            ]
+        ]
+    },
+    {
+        "id": "e60ae0e03830bde9",
+        "type": "telegram sender",
+        "z": "8115699e.dee428",
+        "name": "respuesta a Callback Query",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1280,
+        "y": 1700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "080724bb3274e25e",
+        "type": "api-call-service",
+        "z": "8115699e.dee428",
+        "name": "Activar IB",
+        "server": "2e0f828a.d95dbe",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "input_boolean",
+        "service": "turn_on",
+        "entityId": "input_boolean.fuera_de_casa_horas",
+        "data": "",
+        "dataType": "jsonata",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1220,
+        "y": 1640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dda47754d4253b25",
+        "type": "api-call-service",
+        "z": "8115699e.dee428",
+        "name": "Desactivar IB",
+        "server": "2e0f828a.d95dbe",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "entityId": "input_boolean.fuera_de_casa_horas",
+        "data": "",
+        "dataType": "jsonata",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1230,
+        "y": 1760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7463c098813f4678",
+        "type": "trigger-state",
+        "z": "8115699e.dee428",
+        "name": "",
+        "server": "2e0f828a.d95dbe",
+        "version": 0,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityid": "person.luni",
+        "entityidfiltertype": "exact",
+        "debugenabled": false,
+        "constraints": [
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "current_state",
+                "comparatorType": "is",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "zona",
+                "propertyValue": "new_state.state"
+            },
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "previous_state",
+                "comparatorType": "is_not",
+                "comparatorValueDatatype": "str",
+                "comparatorValue": "zona",
+                "propertyValue": "old_state.state"
+            }
+        ],
+        "outputs": 2,
+        "customoutputs": [],
+        "outputinitially": true,
+        "state_type": "str",
+        "x": 1010,
+        "y": 1960,
+        "wires": [
+            [
+                "ba5106b707fcd865"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "70de468ade8b1dd0",
+        "type": "server-state-changed",
+        "z": "8115699e.dee428",
+        "name": "Luni",
+        "server": "2e0f828a.d95dbe",
+        "version": 3,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "person.acontrolar",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "home",
+        "halt_if_type": "str",
+        "halt_if_compare": "is_not",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": "10",
+        "forType": "num",
+        "forUnits": "seconds",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 730,
+        "y": 1460,
+        "wires": [
+            [
+                "f97878f7.de1bf8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ba5106b707fcd865",
+        "type": "api-current-state",
+        "z": "8115699e.dee428",
+        "name": "fuera de casa +1h 100 REAL - NO FAKE",
+        "server": "2e0f828a.d95dbe",
+        "version": 2,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.fuera_de_casa_horas",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1060,
+        "y": 2040,
+        "wires": [
+            [
+                "a034ac637cc74924"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a034ac637cc74924",
+        "type": "api-call-service",
+        "z": "8115699e.dee428",
+        "name": "IB OFF",
+        "server": "2e0f828a.d95dbe",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "entityId": "input_boolean.fuera_de_casa_horas",
+        "data": "",
+        "dataType": "jsonata",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1260,
+        "y": 1960,
+        "wires": [
+            [
+                "121ed58e5d524a0e"
+            ]
+        ]
+    },
+    {
+        "id": "121ed58e5d524a0e",
+        "type": "api-call-service",
+        "z": "8115699e.dee428",
+        "name": "abrir puerta...",
+        "server": "2e0f828a.d95dbe",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "cover",
+        "service": "open_cover",
+        "entityId": "cover.garaje",
+        "data": "",
+        "dataType": "jsonata",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1550,
+        "y": 1960,
+        "wires": [
+            [
+                "e8d60d1251a0da27"
+            ]
+        ]
+    },
+    {
+        "id": "e8d60d1251a0da27",
+        "type": "function",
+        "z": "8115699e.dee428",
+        "name": "notificar",
+        "func": "// Creamos el mensaje con MARKDOWN\nlet message = '*Abriendo puerta del garaje*';\nlet myChatid = 1234567890;\n\n// Configuramos el payload\nmsg.payload = {chatId : myChatid , type : 'message', content : message};\n\n// Configuramos las opciones\nmsg.payload.options = {disable_web_page_preview : true, parse_mode : \"Markdown\"};\n\n// Enviamos el mensaje\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 2040,
+        "wires": [
+            [
+                "2da9b6e35efa0be5"
+            ]
+        ]
+    },
+    {
+        "id": "2da9b6e35efa0be5",
+        "type": "telegram sender",
+        "z": "8115699e.dee428",
+        "name": "",
+        "bot": "a1846b04.f43ca8",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1570,
+        "y": 2040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "46275d2fac30e5aa",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí tenéis que cambiar el texto \"zona\" por el nombre de la zona real.",
+        "x": 740,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "30fc7419a48925c4",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí debéis cambiar el chatId, el mensaje que se enviará por Telegram... así como las respuestas en el caso de ser necesario.",
+        "x": 900,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "caa2c8adcda35de6",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí debéis cambiar el bot, por el vuestro.",
+        "x": 1100,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "bc76fbceba14c0b7",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "**No tengo ganas de explicar esto de forma escrita**. Tenéis un vídeo que lo explica de Pe a Pa que os resultará útil si no entendéis lo que aquí se hace o simplemente queréis hacer una modificación: https://youtu.be/R0GaZ6Vta-U",
+        "x": 880,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "4f6db619bd45b417",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí tenéis que cambiar el texto \"zona\" por el nombre de la zona real.",
+        "x": 960,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "babd56c93310d2ae",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Yo llamé a mi input_boolean \"input_boolean.fuera_de_casa_horas\"",
+        "x": 960,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "41eb11ee4459afb4",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí debéis cambiar el chatId, el mensaje que se enviará por Telegram... así como las respuestas en el caso de ser necesario.",
+        "x": 1360,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "7659d899045c843e",
+        "type": "comment",
+        "z": "8115699e.dee428",
+        "name": "Cambiar",
+        "info": "Aquí tenéis que cambiar el identificador de vuestra puerta.",
+        "x": 1540,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "a1846b04.f43ca8",
+        "type": "telegram bot",
+        "botname": "DF",
+        "usernames": "",
+        "chatids": "1385874833,-1001393252029,-496751166",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "2e0f828a.d95dbe",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 1,
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": false
+    }
+]
