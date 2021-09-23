@@ -1,0 +1,635 @@
+[
+    {
+        "id": "81d360f4.cbe54",
+        "type": "server-state-changed",
+        "z": "619905db.8913ac",
+        "name": "Acción del cubo",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.sensor_cubo_action",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 2730,
+        "y": 2680,
+        "wires": [
+            [
+                "e3386ff1.64219"
+            ]
+        ]
+    },
+    {
+        "id": "e3386ff1.64219",
+        "type": "switch",
+        "z": "619905db.8913ac",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "shake",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "wakeup",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "fall",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "tap",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "slide",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "flip180",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "flip90",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "rotate_left",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "rotate_right",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 9,
+        "x": 2900,
+        "y": 2680,
+        "wires": [
+            [
+                "4798e1f3.9bdba"
+            ],
+            [],
+            [],
+            [],
+            [
+                "448047d5.556f58"
+            ],
+            [],
+            [
+                "c2cea1f8.5a90e"
+            ],
+            [
+                "7790f30c.bfd21c"
+            ],
+            [
+                "771c1479.d62ebc"
+            ]
+        ]
+    },
+    {
+        "id": "198a50f7.a9531f",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "Obtener brillo actual",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "data.attributes.brightness",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3400,
+        "y": 2860,
+        "wires": [
+            [
+                "1c34ddcd.f10a42"
+            ]
+        ]
+    },
+    {
+        "id": "1c34ddcd.f10a42",
+        "type": "range",
+        "z": "619905db.8913ac",
+        "minin": "0",
+        "maxin": "255",
+        "minout": "0",
+        "maxout": "100",
+        "action": "clamp",
+        "round": true,
+        "property": "payload",
+        "name": "",
+        "x": 3590,
+        "y": 2860,
+        "wires": [
+            [
+                "cda15d90.72038"
+            ]
+        ]
+    },
+    {
+        "id": "cda15d90.72038",
+        "type": "function",
+        "z": "619905db.8913ac",
+        "name": "Reglas",
+        "func": "var payload = msg.payload + 10\n\n\nif (payload < 0) {\n    payload = 0;\n}\n    \nif (payload > 100) {\n    payload = 100;\n} \n\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3730,
+        "y": 2860,
+        "wires": [
+            [
+                "3c2a67dc.42f488"
+            ]
+        ]
+    },
+    {
+        "id": "3c2a67dc.42f488",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Cambiar brillo",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_lampara",
+        "data": "{\"brightness_pct\": {{payload}}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3900,
+        "y": 2860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7790f30c.bfd21c",
+        "type": "api-current-state",
+        "z": "619905db.8913ac",
+        "name": "Estado de la bombilla",
+        "server": "863a80ba.c8027",
+        "version": 2,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.luz_lampara",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 3140,
+        "y": 2740,
+        "wires": [
+            [
+                "d0588bbe.ec6cc8"
+            ],
+            [
+                "fa694300.76692"
+            ]
+        ]
+    },
+    {
+        "id": "771c1479.d62ebc",
+        "type": "api-current-state",
+        "z": "619905db.8913ac",
+        "name": "Estado de la bombilla",
+        "server": "863a80ba.c8027",
+        "version": 2,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.luz_lampara",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 3160,
+        "y": 2900,
+        "wires": [
+            [
+                "198a50f7.a9531f"
+            ],
+            [
+                "781afaf1.b420b4"
+            ]
+        ]
+    },
+    {
+        "id": "781afaf1.b420b4",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Encender",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_lampara",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3360,
+        "y": 2940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0588bbe.ec6cc8",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "Obtener brillo actual",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "data.attributes.brightness",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3380,
+        "y": 2700,
+        "wires": [
+            [
+                "564b5dfc.bca5e4"
+            ]
+        ]
+    },
+    {
+        "id": "564b5dfc.bca5e4",
+        "type": "range",
+        "z": "619905db.8913ac",
+        "minin": "0",
+        "maxin": "255",
+        "minout": "0",
+        "maxout": "100",
+        "action": "clamp",
+        "round": true,
+        "property": "payload",
+        "name": "",
+        "x": 3570,
+        "y": 2700,
+        "wires": [
+            [
+                "2ef4b352.9f575c"
+            ]
+        ]
+    },
+    {
+        "id": "2ef4b352.9f575c",
+        "type": "function",
+        "z": "619905db.8913ac",
+        "name": "Reglas",
+        "func": "var payload = msg.payload - 10;\n\n\nif (payload < 0) {\n    payload = 0;\n}\n    \nif (payload > 100) {\n    payload = 100;\n} \n\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3710,
+        "y": 2700,
+        "wires": [
+            [
+                "54a5a458.e0479c"
+            ]
+        ]
+    },
+    {
+        "id": "54a5a458.e0479c",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Cambiar brillo",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_lampara",
+        "data": "{\"brightness_pct\": {{payload}}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3880,
+        "y": 2700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa694300.76692",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Encender",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_lampara",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3340,
+        "y": 2780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "448047d5.556f58",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Lámpara oficina",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "toggle",
+        "entityId": "light.luz_lampara",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3120,
+        "y": 2540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4798e1f3.9bdba",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Regleta 3D",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "toggle",
+        "entityId": "switch.enchufe_regleta",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3110,
+        "y": 2480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ddde3bd3.cc66c8",
+        "type": "change",
+        "z": "619905db.8913ac",
+        "name": "Obtener temperatura actual",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "data.attributes.color_temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3400,
+        "y": 2560,
+        "wires": [
+            [
+                "e31e2ab4.9df1a8"
+            ]
+        ]
+    },
+    {
+        "id": "e31e2ab4.9df1a8",
+        "type": "function",
+        "z": "619905db.8913ac",
+        "name": "Reglas",
+        "func": "var payload = msg.payload\n\n//150 315 500\n\nif (payload <= 153) {\n    payload = 315\n    \n} else if (payload > 150 && payload <= 315) {\n    payload = 454;\n\n} else if (payload > 315 && payload <= 454) {\n    payload = 153;\n\n}\n\n\n\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3610,
+        "y": 2560,
+        "wires": [
+            [
+                "6fd7829c.9e5a8c"
+            ]
+        ]
+    },
+    {
+        "id": "c2cea1f8.5a90e",
+        "type": "api-current-state",
+        "z": "619905db.8913ac",
+        "name": "Estado de la bombilla",
+        "server": "863a80ba.c8027",
+        "version": 2,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.luz_lampara",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 3140,
+        "y": 2600,
+        "wires": [
+            [
+                "ddde3bd3.cc66c8"
+            ],
+            [
+                "71344fb8.e9404"
+            ]
+        ]
+    },
+    {
+        "id": "6fd7829c.9e5a8c",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Cambiar temperatura",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_lampara",
+        "data": "{\"color_temp\": {{payload}}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3800,
+        "y": 2560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "71344fb8.e9404",
+        "type": "api-call-service",
+        "z": "619905db.8913ac",
+        "name": "Encender",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.luz_lampara",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 3340,
+        "y": 2640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 1,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
+    }
+]
