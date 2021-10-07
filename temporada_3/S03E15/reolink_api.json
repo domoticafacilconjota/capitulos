@@ -1,0 +1,180 @@
+[
+    {
+        "id": "3d2db23e92e2cdf7",
+        "type": "http request",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 2610,
+        "y": 3620,
+        "wires": [
+            [
+                "723945630d5c8551"
+            ]
+        ]
+    },
+    {
+        "id": "cda2e735b5a374bc",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "Obtener token",
+        "props": [
+            {
+                "p": "url",
+                "v": "http://IP.DE.TU.RASPI/cgi-bin/api.cgi?cmd=Login&token=null",
+                "vt": "str"
+            },
+            {
+                "p": "method",
+                "v": "POST",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"cmd\":\"Login\",\"action\":0,\"param\":{\"User\":{\"userName\":\"usuario\",\"password\":\"contraseña\"}}}]",
+        "payloadType": "json",
+        "x": 2440,
+        "y": 3620,
+        "wires": [
+            [
+                "3d2db23e92e2cdf7"
+            ]
+        ]
+    },
+    {
+        "id": "5df428e08e070485",
+        "type": "debug",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2730,
+        "y": 3720,
+        "wires": []
+    },
+    {
+        "id": "723945630d5c8551",
+        "type": "json",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 2770,
+        "y": 3620,
+        "wires": [
+            [
+                "c7f1f0bc70a787fa"
+            ]
+        ]
+    },
+    {
+        "id": "c7f1f0bc70a787fa",
+        "type": "change",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "camToken",
+                "pt": "msg",
+                "to": "payload[0].value.Token.name",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2950,
+        "y": 3620,
+        "wires": [
+            [
+                "520febc526c01061"
+            ]
+        ]
+    },
+    {
+        "id": "520febc526c01061",
+        "type": "change",
+        "z": "50e5612f.3fc45",
+        "name": "subir",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "\"http://IP.DE.TU.RASPI/cgi-bin/api.cgi?cmd=COMANDO.A.ENVIAR&token=\" & camToken",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "method",
+                "pt": "msg",
+                "to": "POST",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "COMADO.EXTRAIDO.DE.LA.UI.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2420,
+        "y": 3720,
+        "wires": [
+            [
+                "f984aac96e3fd109"
+            ]
+        ]
+    },
+    {
+        "id": "f984aac96e3fd109",
+        "type": "http request",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 2570,
+        "y": 3720,
+        "wires": [
+            [
+                "5df428e08e070485"
+            ]
+        ]
+    }
+]
