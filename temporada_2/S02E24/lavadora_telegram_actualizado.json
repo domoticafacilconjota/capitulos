@@ -1,0 +1,407 @@
+[
+    {
+        "id": "180b038d5f1ff664",
+        "type": "server-state-changed",
+        "z": "50e5612f.3fc45",
+        "name": "Lavadora",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "sensor.enchufe_lavadora_00_00_00_cuarto_de_maquinas_azotea_energy_power",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": false,
+        "for": "",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 280,
+        "y": 4120,
+        "wires": [
+            [
+                "c5569912f710dc5f",
+                "8c986889f2da5663"
+            ]
+        ]
+    },
+    {
+        "id": "04a6380f03445bf9",
+        "type": "power-monitor",
+        "z": "50e5612f.3fc45",
+        "name": "Lavadora",
+        "startthreshold": "15",
+        "stopthreshold": "10",
+        "startafter": "30",
+        "stopafter": "3",
+        "x": 680,
+        "y": 4120,
+        "wires": [
+            [
+                "56caf843ba3b85b2"
+            ]
+        ]
+    },
+    {
+        "id": "c5569912f710dc5f",
+        "type": "smooth",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "property": "payload",
+        "action": "low",
+        "count": "10",
+        "round": "",
+        "mult": "single",
+        "reduce": false,
+        "x": 520,
+        "y": 4120,
+        "wires": [
+            [
+                "04a6380f03445bf9"
+            ]
+        ]
+    },
+    {
+        "id": "53659a816bcdcffd",
+        "type": "function",
+        "z": "50e5612f.3fc45",
+        "name": "Acabó la lavadora",
+        "func": "var message = '*Acabó la LAVADORA:*\\r\\n' +\n'A lavar, a lavar, que no paras de ensuciar...';\nmsg.method = \"sendMessage\";\nmsg.payload = {\"parse_mode\": \"markdown\", \"text\": message};\n\nvar startTime = global.set(\"lavadoraStart\", -1);\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1050,
+        "y": 4120,
+        "wires": [
+            [
+                "8c15c14d89b90b58"
+            ]
+        ]
+    },
+    {
+        "id": "8c15c14d89b90b58",
+        "type": "telegrambot-payload",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "bot": "",
+        "chatId": "-000000000",
+        "sendMethod": "",
+        "payload": "",
+        "x": 1290,
+        "y": 4120,
+        "wires": [
+            [
+                "08a63f8fcd1234fc"
+            ]
+        ]
+    },
+    {
+        "id": "08a63f8fcd1234fc",
+        "type": "telegrambot-payload",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "bot": "",
+        "chatId": "-000000000",
+        "sendMethod": "sendSticker",
+        "payload": "{\"sticker\": \"CAADAgADrgADMNSdEdDKWPlOcbTVFgQ\"}",
+        "x": 1530,
+        "y": 4120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fdb7730503e6def6",
+        "type": "function",
+        "z": "50e5612f.3fc45",
+        "name": "Guardar hora de inicio",
+        "func": "var now = new Date().getTime();\nvar startTime = global.set(\"lavadoraStart\", now);\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1060,
+        "y": 4040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6f28d35451be6b58",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "200",
+        "payloadType": "num",
+        "x": 290,
+        "y": 4220,
+        "wires": [
+            [
+                "c5569912f710dc5f",
+                "8c986889f2da5663"
+            ]
+        ]
+    },
+    {
+        "id": "b0b7c5c5e35c8fb8",
+        "type": "inject",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 290,
+        "y": 4280,
+        "wires": [
+            [
+                "c5569912f710dc5f",
+                "8c986889f2da5663"
+            ]
+        ]
+    },
+    {
+        "id": "aed48d812c959489",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Cambia el Entity ID por el identificador de tu entidad",
+        "x": 280,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "e5feee78486f0e67",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Ajustar todos los valores de ser necesario.",
+        "x": 680,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "3fc254ea01014a5b",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Cambia el Chat ID y bot",
+        "x": 1320,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "779a4f5ef7e079a2",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Cambia el Chat ID y bot",
+        "x": 1560,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "9317d062ba19fea2",
+        "type": "api-call-service",
+        "z": "50e5612f.3fc45",
+        "name": "Acatualizar Input",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "debugenabled": false,
+        "service_domain": "input_datetime",
+        "service": "set_datetime",
+        "entityId": "input_datetime.lavadora",
+        "data": "{\"time\":\"{{payload}}\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "data"
+            }
+        ],
+        "queue": "none",
+        "x": 910,
+        "y": 4300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8c986889f2da5663",
+        "type": "function",
+        "z": "50e5612f.3fc45",
+        "name": "Tiempo en marcha",
+        "func": "var startTime = global.get(\"lavadoraStart\");\nif (startTime == -1) {\n    msg.payload = \"00:00:00\";\n    return msg;\n}\n \nvar now = new Date().getTime();\n\nvar diff = now - startTime;\n\nvar date = new Date(diff);\nvar hours = date.getHours();\nvar minutes = \"0\" + (date.getMinutes() + 5);\nvar seconds = \"0\" + date.getSeconds();\n\nvar formattedTime = '00:00:00';\n\nif (!isNaN(hours) && !isNaN(minutes) && !isNaN(seconds)) {\n    formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);\n\n} else {\n    formattedTime = '00:00:00';\n\n}\n\nmsg.payload = formattedTime;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 550,
+        "y": 4300,
+        "wires": [
+            [
+                "558103ee502582e6"
+            ]
+        ]
+    },
+    {
+        "id": "317c680fd679173d",
+        "type": "comment",
+        "z": "50e5612f.3fc45",
+        "name": "Modificar",
+        "info": "Cambia el Entity ID por el identificador de tu entidad",
+        "x": 940,
+        "y": 4260,
+        "wires": []
+    },
+    {
+        "id": "b47d4e95b213a408",
+        "type": "function",
+        "z": "50e5612f.3fc45",
+        "name": "Guardar hora de inicio",
+        "func": "var now = new Date().getTime();\nvar startTime = global.set(\"lavadoraStart\", -1);\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 4200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "558103ee502582e6",
+        "type": "throttle",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "10",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 730,
+        "y": 4300,
+        "wires": [
+            [
+                "9317d062ba19fea2"
+            ]
+        ]
+    },
+    {
+        "id": "56caf843ba3b85b2",
+        "type": "switch",
+        "z": "50e5612f.3fc45",
+        "name": "",
+        "property": "payload.event",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "pre_start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "running",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "stop",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 850,
+        "y": 4120,
+        "wires": [
+            [],
+            [
+                "fdb7730503e6def6"
+            ],
+            [],
+            [
+                "53659a816bcdcffd",
+                "b47d4e95b213a408"
+            ]
+        ]
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 1,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
+    }
+]
