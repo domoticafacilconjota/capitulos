@@ -1,4 +1,4 @@
 - platform: generic
   stream_source: rtsp://USUARIO:CONTRASEÑA@IP.DE.LA.CÁMARA:554/h264Preview_01_main
-  still_image_url: http://IP.DE.LA.CÁMARA/cgi-bin/api.cgi?cmd=Snap&channel=0&rs=wuuPhkmUCeI9WG7C&user=USUARIO&password=CONTRASEÑA
+  still_image_url: http://IP.DE.LA.CÁMARA/cgi-bin/api.cgi?cmd=Snap&channel=0&rs=28LetrasYNumeros&user=USUARIO&password=CONTRASEÑA
   name: "Camara pruebas"
