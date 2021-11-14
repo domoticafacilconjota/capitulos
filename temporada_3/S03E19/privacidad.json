@@ -1,0 +1,196 @@
+[
+    {
+        "id": "e8c5d4c3666a5999",
+        "type": "server-state-changed",
+        "z": "94a983e1e0103e5d",
+        "name": "Privacidad de la cámara XXX",
+        "server": "863a80ba.c8027",
+        "version": 3,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_boolean.activar_camara_xxx",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 200,
+        "y": 1500,
+        "wires": [
+            [
+                "f8863265998c1275"
+            ],
+            [
+                "d1719fa1812e494e"
+            ]
+        ]
+    },
+    {
+        "id": "eab9da772a8aa03a",
+        "type": "mqtt out",
+        "z": "94a983e1e0103e5d",
+        "name": "",
+        "topic": "blueiris/admin",
+        "qos": "2",
+        "retain": "true",
+        "broker": "b3c4bb495d145100",
+        "x": 620,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "f8863265998c1275",
+        "type": "change",
+        "z": "94a983e1e0103e5d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "camera=CAMBIARCAM&enable=1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1440,
+        "wires": [
+            [
+                "eab9da772a8aa03a"
+            ]
+        ]
+    },
+    {
+        "id": "d1719fa1812e494e",
+        "type": "change",
+        "z": "94a983e1e0103e5d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "camera=CAMBIARCAM&enable=0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1560,
+        "wires": [
+            [
+                "eab9da772a8aa03a"
+            ]
+        ]
+    },
+    {
+        "id": "0c559c2a3a0dd9c0",
+        "type": "comment",
+        "z": "94a983e1e0103e5d",
+        "name": "Cambiar",
+        "info": "Cambia CAMBIARCAM por el nombre corto que le has dado a la cámara en BlueIris.",
+        "x": 400,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "c53c375764e07da3",
+        "type": "comment",
+        "z": "94a983e1e0103e5d",
+        "name": "Cambiar",
+        "info": "Cambia CAMBIARCAM por el nombre corto que le has dado a la cámara en BlueIris.",
+        "x": 400,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "b5451a87aa24834d",
+        "type": "comment",
+        "z": "94a983e1e0103e5d",
+        "name": "Cambiar",
+        "info": "Cambiar el Entity ID por el del input_boolean que has creado para controlar si la cámara debe estar activada o desactivada.",
+        "x": 140,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "863a80ba.c8027",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 1,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
+    },
+    {
+        "id": "b3c4bb495d145100",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.10",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
