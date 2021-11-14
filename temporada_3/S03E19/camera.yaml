@@ -1,0 +1,4 @@
+- platform: mjpeg
+  mjpeg_url: http://192.168.1.16:81/mjpg/NOMBRECORTOCAMARA
+  still_image_url: http://192.168.1.16:81/image/NOMBRECORTOCAMARA?clean=1
+  name: "Cocina secundaria"
